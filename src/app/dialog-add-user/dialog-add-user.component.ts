@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Firestore, collection, doc, collectionData, onSnapshot, addDoc } from '@angular/fire/firestore';
+import { MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/models/user.class';
 
 @Component({
@@ -9,11 +11,50 @@ import { User } from 'src/models/user.class';
 export class DialogAddUserComponent {
   user = new User();
   birthDate!: Date;
+  loading = false;
+  firestore: Firestore = inject(Firestore);
 
 
-  saveNewUser(){
+
+  unsubUsers;
+
+  constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>) { 
+    this.unsubUsers = this.subUsers();
+  }
+
+  subUsers(){
+    return onSnapshot(this.usersRef(), (list) => {
+      list.forEach(element => {
+        //console.log(element.data());
+      });
+    })
+  }
+  ngonDestroy() {
+    this.unsubUsers();
+  }
+
+
+  usersRef() {
+    return collection(this.firestore, 'users');
+  }
+
+
+  async saveNewUser() {
     this.user.birthDate = this.birthDate.getTime();
     console.log(this.user);
-    
+    this.loading = true;
+    const userData = this.user.toJSON();
+    await addDoc(this.usersRef(), userData).catch(
+      (err) => { console.error(err); }
+    ).then(
+      () => setTimeout(() => {
+        this.loading = false;
+        this.dialogRef.close();
+      }, 500)
+    )
+  }
+
+  dialogClose(){
+    this.dialogRef.close();
   }
 }

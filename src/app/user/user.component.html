@@ -1,5 +1,21 @@
+<mat-card>
+  <table  cellspacing="0" class="user-table">
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>City</th>
+    </tr>
+    
+    <tr *ngFor="let data of allUsers; let i = index">
+      <td>{{data}}</td>
+      <td>{{data}}</td>
+      <td>{{data}}</td>
+    </tr>
+   
+  </table>
+</mat-card>
 
-<button (click)="openDialog()"class="add-user-btn" matTooltip="Add a new user"  [matTooltipPosition]="'above'" mat-fab color="primary">
-    <mat-icon>add</mat-icon>
-  </button>
-
+<button (click)="openDialog()" class="add-user-btn" matTooltip="Add a new user" [matTooltipPosition]="'above'" mat-fab
+  color="primary">
+  <mat-icon>add</mat-icon>
+</button>

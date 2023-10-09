@@ -1,4 +1,7 @@
+import { CollectionReference, DocumentData } from "@angular/fire/firestore";
+
 export class User {
+   
     firstName!: string;
     lastName!: string;
     birthDate!: number;
@@ -6,6 +9,19 @@ export class User {
     country!: string;
     zipCode!: number;
     city!: string;
+  id: any;
+
+    toJSON(): any {
+      return {
+          firstName: this.firstName,
+          lastName: this.lastName,
+          birthDate: this.birthDate,
+          street: this.street,
+          country: this.country,
+          zipCode: this.zipCode,
+          city: this.city
+      };
+  }
 
     // ? -> allows to create json without any input
     constructor(obj?: any) {
