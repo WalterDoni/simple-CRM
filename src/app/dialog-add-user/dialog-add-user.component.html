@@ -14,16 +14,14 @@
         </mat-form-field>
     </div>
 
+
     <div>
-        <mat-form-field>
-            <mat-label>Birth Date</mat-label>
-            <input [disabled] = "loading" [(ngModel)] = "birthDate" matInput [matDatepicker]="picker">
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
+        <mat-form-field class="mr-16" appearance="outline">
+            <mat-label>E-mail</mat-label>
+            <input [disabled] = "loading" [(ngModel)] = "user.email"  matInput placeholder="Placeholder">
         </mat-form-field>
 
     </div>
-
 
     <div>
         <mat-form-field class="mr-16" appearance="outline">
@@ -31,9 +29,11 @@
             <input [disabled] = "loading" [(ngModel)] = "user.street" matInput placeholder="Placeholder">
         </mat-form-field>
 
-        <mat-form-field class="mr-16" appearance="outline">
-            <mat-label>Country</mat-label>
-            <input [disabled] = "loading" [(ngModel)] = "user.country"  matInput placeholder="Placeholder">
+        <mat-form-field>
+            <mat-label>Birth Date</mat-label>
+            <input [disabled] = "loading" [(ngModel)] = "birthDate" matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
     </div>
 

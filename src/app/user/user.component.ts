@@ -19,15 +19,14 @@ export class UserComponent {
 
   constructor(public dialog: MatDialog) {
     this.unsubUsers = this.subUsers();
-    console.log(this.singeUserRef);
+ 
   }
 
-
   async updateUser(currentuser: User){
-  if(currentuser.id){
+  debugger
+  if(currentuser){
     let docRef = this.singeUserRef('users',currentuser.id)
     await updateDoc(docRef, this.getCleanJson(currentuser))
-
   }
   }
 
@@ -37,28 +36,31 @@ export class UserComponent {
       firstName: currentuser.firstName,
       lastName: currentuser.lastName,
       birthDate: currentuser.birthDate,
+      email: currentuser.email,
       street: currentuser.street,
-      country: currentuser.country,
       zipCode: currentuser.zipCode,
       city: currentuser.city,
+     
   };
   }
-
   subUsers() {
     return onSnapshot(this.usersRef(), (list) => {
+      const currentUsers: DocumentData[] = []; 
       list.forEach(element => {
-        this.allUsers.push(element.data())
-        console.log(this.allUsers);
+        currentUsers.push({ data: element.data(), id: element.id });
+
       });
-    })
+      this.allUsers = currentUsers;
+      console.log(this.allUsers);
+    });
   }
 
   ngonDestroy() {
     this.unsubUsers();
   }
+
   openDialog() {
     this.dialog.open(DialogAddUserComponent);
-
   }
 
   usersRef() {

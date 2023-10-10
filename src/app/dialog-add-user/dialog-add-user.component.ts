@@ -18,21 +18,21 @@ export class DialogAddUserComponent {
 
   unsubUsers;
 
-  constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>) { 
+  constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>) {
     this.unsubUsers = this.subUsers();
   }
 
-  subUsers(){
+  subUsers() {
     return onSnapshot(this.usersRef(), (list) => {
       list.forEach(element => {
         //console.log(element.data());
       });
     })
   }
+
   ngonDestroy() {
     this.unsubUsers();
   }
-
 
   usersRef() {
     return collection(this.firestore, 'users');
@@ -54,7 +54,7 @@ export class DialogAddUserComponent {
     )
   }
 
-  dialogClose(){
+  dialogClose() {
     this.dialogRef.close();
   }
 }

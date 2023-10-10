@@ -1,15 +1,16 @@
 <mat-card>
   <table  cellspacing="0" class="user-table">
     <tr>
-      <th>Firstname</th>
-      <th>Lastname</th>
+      <th>Name</th>
+      <th>Email</th>
       <th>City</th>
     </tr>
     
-    <tr *ngFor="let data of allUsers; let i = index">
-      <td>{{data}}</td>
-      <td>{{data}}</td>
-      <td>{{data}}</td>
+    <tr *ngFor="let user of allUsers; let i = index;" [routerLink] = "['/user/' + user['id']]">
+   
+      <td >{{user['data']['firstName']}} {{user['data']['lastName']}}</td>
+      <td>{{user['data']['email']}}</td>
+      <td>{{user['data']['city']}}</td>
     </tr>
    
   </table>

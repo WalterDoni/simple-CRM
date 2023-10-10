@@ -4,9 +4,9 @@ export class User {
    
     firstName!: string;
     lastName!: string;
+    email!: string
     birthDate!: number;
     street!: string;
-    country!: string;
     zipCode!: number;
     city!: string;
   id: any;
@@ -15,9 +15,9 @@ export class User {
       return {
           firstName: this.firstName,
           lastName: this.lastName,
+          email: this.email,
           birthDate: this.birthDate,
           street: this.street,
-          country: this.country,
           zipCode: this.zipCode,
           city: this.city
       };
@@ -27,9 +27,9 @@ export class User {
     constructor(obj?: any) {
         this.firstName = obj ? obj.firstName : ''; //fast if / else request --> if obj exist obj.firstname else ''
         this.lastName = obj ? obj.lastName : '';
+        this.email = obj ? obj.email: '';
         this.birthDate = obj ? obj.birthDate : '';
         this.street = obj ? obj.street : '';
-        this.country = obj ? obj.country : '';
         this.zipCode = obj ? obj.zipCode : '';
         this.city = obj ? obj.city : '';
     }
