@@ -59,14 +59,15 @@ export class UserDetailComponent {
 
   openDialogEditAddress() {
     const dialog = this.dialog.open(DialogEditAddressComponent);
-    dialog.componentInstance.userData = new User(this.user)
-    
+    dialog.componentInstance.userData = new User(this.user);
+    dialog.componentInstance.userId = this.userId;
+
   }
 
-  
   openDialogEditNameEmail() {
     const dialog = this.dialog.open(DialogEditUserNameEmailComponent);
-    dialog.componentInstance.userData = new User(this.user)
+    dialog.componentInstance.userData = new User(this.user);
+    dialog.componentInstance.userId = this.userId;
   }
 }
 

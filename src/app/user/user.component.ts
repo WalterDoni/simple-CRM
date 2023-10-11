@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
-import { MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
 import { User } from 'src/models/user.class';
-import { DocumentData, Firestore, collection, doc, onSnapshot} from '@angular/fire/firestore';
+import { DocumentData, Firestore, collection, doc, onSnapshot } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-user',
@@ -13,7 +13,7 @@ export class UserComponent {
 
   user = new User();
   allUsers: DocumentData[] = [];
-  currentUserID : string = '';
+  currentUserID: string = '';
   firestore: Firestore = inject(Firestore);
   unsubUsers;
 
@@ -22,7 +22,7 @@ export class UserComponent {
   }
 
 
-  getCleanJson(currentuser: User) : {}{
+  getCleanJson(currentuser: User): {} {
     return {
       firstName: currentuser.firstName,
       lastName: currentuser.lastName,
@@ -31,18 +31,17 @@ export class UserComponent {
       street: currentuser.street,
       zipCode: currentuser.zipCode,
       city: currentuser.city,
-     
-  };
+    };
   }
 
   subUsers() {
     return onSnapshot(this.usersRef(), (list) => {
-      const currentUsers: DocumentData[] = []; 
+      const currentUsers: DocumentData[] = [];
       list.forEach(element => {
         currentUsers.push({ data: element.data(), id: element.id });
       });
       this.allUsers = currentUsers;
-    
+
     });
   }
 
@@ -58,8 +57,8 @@ export class UserComponent {
     return collection(this.firestore, 'users');
   }
 
-  singeUserRef(colID: string, docID: string){
-    return doc(collection(this.firestore,colID), docID);
+  singeUserRef(colID: string, docID: string) {
+    return doc(collection(this.firestore, colID), docID);
   }
 
 
