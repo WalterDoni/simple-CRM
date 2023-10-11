@@ -1,18 +1,36 @@
-<mat-card class="user-detail-header">
+<mat-card class="user-detail-header" *ngIf="userData.length > 0">
     <img src="./assets/img/profile.png" alt="">
     <div class="user-detail">
-        <h2>Max Mustermann</h2>
-        email@email.de
-
+        <h2>{{userData[0]['firstName']}}{{userData[0]['lastName']}}</h2>
+        {{userData[0]['email']}}
     </div>
+    <button mat-icon-button class="right-top-corner" [matMenuTriggerFor]="nameEmailEdit">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #nameEmailEdit="matMenu">
+        <button mat-menu-item (click)="openDialogEditNameEmail()">
+          <mat-icon>edit</mat-icon>
+          <span>Edit</span>
+        </button>
+      </mat-menu>
+
 </mat-card>
 
-<mat-card class="mt-32">
+<mat-card class="mt-32" *ngIf="userData.length > 0">
     <mat-card-header>
         <mat-card-title>Address</mat-card-title>
-    </mat-card-header> 
-<mat-card-content>
-    Musterstrasse 23 <br>
-    12345 Wien
-</mat-card-content>
+    </mat-card-header>
+    <mat-card-content>
+        {{userData[0]['street']}}<br>
+        {{userData[0]['zipCode']}}  {{userData[0]['city']}}
+    </mat-card-content>
+    <button mat-icon-button class="right-top-corner" [matMenuTriggerFor]="adressEdit">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #adressEdit="matMenu">
+        <button mat-menu-item (click)="openDialogEditAddress()">
+          <mat-icon>edit</mat-icon>
+          <span>Edit</span>
+        </button>
+      </mat-menu>
 </mat-card>

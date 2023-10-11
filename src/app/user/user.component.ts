@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog} from '@angular/material/dialog';
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
 import { User } from 'src/models/user.class';
-import { DocumentData, Firestore, collection, doc, onSnapshot, updateDoc } from '@angular/fire/firestore';
+import { DocumentData, Firestore, collection, doc, onSnapshot} from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-user',
@@ -19,15 +19,6 @@ export class UserComponent {
 
   constructor(public dialog: MatDialog) {
     this.unsubUsers = this.subUsers();
- 
-  }
-
-  async updateUser(currentuser: User){
-  debugger
-  if(currentuser){
-    let docRef = this.singeUserRef('users',currentuser.id)
-    await updateDoc(docRef, this.getCleanJson(currentuser))
-  }
   }
 
 
@@ -43,15 +34,15 @@ export class UserComponent {
      
   };
   }
+
   subUsers() {
     return onSnapshot(this.usersRef(), (list) => {
       const currentUsers: DocumentData[] = []; 
       list.forEach(element => {
         currentUsers.push({ data: element.data(), id: element.id });
-
       });
       this.allUsers = currentUsers;
-      console.log(this.allUsers);
+    
     });
   }
 
