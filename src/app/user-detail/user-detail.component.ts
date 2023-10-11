@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
 import { DialogEditUserNameEmailComponent } from '../dialog-edit-user-name-email/dialog-edit-user-name-email.component';
+import { User } from 'src/models/user.class';
 
 @Component({
   selector: 'app-user-detail',
@@ -12,7 +13,7 @@ import { DialogEditUserNameEmailComponent } from '../dialog-edit-user-name-email
   styleUrls: ['./user-detail.component.scss']
 })
 export class UserDetailComponent {
-
+  user = new User;
   userId = '';
   collectionInstance: any;
   userData: DocumentData[] = []
@@ -40,6 +41,7 @@ export class UserDetailComponent {
       list.forEach(element => {
         if (element.id == this.userId) {
           this.userData.push(element.data());
+          this.user = this.userData[0] as User
           console.log(this.userData);
         }
       })
@@ -57,14 +59,14 @@ export class UserDetailComponent {
 
   openDialogEditAddress() {
     const dialog = this.dialog.open(DialogEditAddressComponent);
-    dialog.componentInstance.userData = this.userData
+    dialog.componentInstance.userData = new User(this.user)
     
   }
 
   
   openDialogEditNameEmail() {
     const dialog = this.dialog.open(DialogEditUserNameEmailComponent);
-    dialog.componentInstance.userData = this.userData
+    dialog.componentInstance.userData = new User(this.user)
   }
 }
 

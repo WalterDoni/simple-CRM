@@ -6,18 +6,18 @@
         <div>
             <mat-form-field class="mr-16" appearance="outline">
                 <mat-label>Firstname</mat-label>
-                <input [disabled]="loading" [(ngModel)]="userData[0]['firstName']" matInput placeholder="Placeholder">
+                <input [disabled]="loading" [(ngModel)]="userData['firstName']" matInput placeholder="Placeholder">
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>Lastname</mat-label>
-                <input [disabled]="loading" [(ngModel)]="userData[0]['lastName']" matInput placeholder="Placeholder">
+                <input [disabled]="loading" [(ngModel)]="userData['lastName']" matInput placeholder="Placeholder">
             </mat-form-field>
 
             <div>
                 <mat-form-field class="mr-16" appearance="outline">
                     <mat-label>Email</mat-label>
-                    <input [disabled]="loading" [(ngModel)]="userData[0]['email']" matInput placeholder="Placeholder">
+                    <input [disabled]="loading" [(ngModel)]="userData['email']" matInput placeholder="Placeholder">
                 </mat-form-field>
             </div>
         </div>

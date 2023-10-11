@@ -6,18 +6,18 @@
     <div>
         <mat-form-field class="mr-16" appearance="outline">
             <mat-label>Street + Number</mat-label>
-            <input [disabled] = "loading" [(ngModel)] = "userData[0]['street']" matInput placeholder="Placeholder">
+            <input [disabled] = "loading" [(ngModel)] = "userData['street']" matInput placeholder="Placeholder">
         </mat-form-field>
 
     <div>
         <mat-form-field class="mr-16" appearance="outline">
             <mat-label>ZIP Code</mat-label>
-            <input [disabled] = "loading" [(ngModel)] = "userData[0]['zipCode']"  matInput placeholder="Placeholder">
+            <input [disabled] = "loading" [(ngModel)] = "userData['zipCode']"  matInput placeholder="Placeholder">
         </mat-form-field>
 
         <mat-form-field class="mr-16" appearance="outline">
             <mat-label>City</mat-label>
-            <input [disabled] = "loading" [(ngModel)] = "userData[0]['city']"  matInput placeholder="Placeholder">
+            <input [disabled] = "loading" [(ngModel)] = "userData['city']"  matInput placeholder="Placeholder">
         </mat-form-field>
     </div>
 

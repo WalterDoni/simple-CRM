@@ -9,7 +9,7 @@ import { User } from 'src/models/user.class';
   styleUrls: ['./dialog-edit-user-name-email.component.scss']
 })
 export class DialogEditUserNameEmailComponent {
-  userData: DocumentData[] = []
+  userData = new User;
   loading = false;
 
 constructor(public dialogRef: MatDialogRef<DialogEditUserNameEmailComponent>){}
