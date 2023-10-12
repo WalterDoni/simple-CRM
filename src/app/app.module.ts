@@ -29,10 +29,14 @@ import { DialogEditAddressComponent } from './dialog-edit-address/dialog-edit-ad
 import { DialogEditUserNameEmailComponent } from './dialog-edit-user-name-email/dialog-edit-user-name-email.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
+import { NgChartsModule} from 'ng2-charts';
+import { LineChartComponent } from './line-chart/line-chart.component';
+import { BarChartComponent } from './bar-chart/bar-chart.component';
+import { PieChartComponent } from './pie-chart/pie-chart.component';
+import { HistoryChartComponent } from './history-chart/history-chart.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
  
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +46,10 @@ import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
     UserDetailComponent,
     DialogEditAddressComponent,
     DialogEditUserNameEmailComponent,
+    LineChartComponent,
+    BarChartComponent,
+    PieChartComponent,
+    HistoryChartComponent,
     
   ],
   imports: [
@@ -65,6 +73,10 @@ import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
     MatMenuModule,
     MatTabsModule,
     CanvasJSAngularChartsModule,
+    NgChartsModule,
+    MatTableModule,
+    MatPaginatorModule,
+
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
   ],

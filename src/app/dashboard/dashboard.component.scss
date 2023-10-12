@@ -1,0 +1,18 @@
+router-container{
+    padding-left: 15px!important;
+    padding-right: 15px!important;
+
+}
+
+.content {
+    display: flex;
+    height: 90vh;
+    flex-wrap: wrap;
+}
+
+app-line-chart,
+app-bar-chart,
+app-pie-chart,
+app-history-chart{
+    width: 50%;
+}
