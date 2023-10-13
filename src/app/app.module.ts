@@ -37,6 +37,7 @@ import { HistoryChartComponent } from './history-chart/history-chart.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
+import { ItemsComponent } from './items/items.component';
  
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
     PieChartComponent,
     HistoryChartComponent,
     LegalNoticeComponent,
+    ItemsComponent,
     
   ],
   imports: [

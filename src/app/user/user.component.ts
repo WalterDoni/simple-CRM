@@ -39,6 +39,8 @@ export class UserComponent {
         currentUsers.push({ data: element.data(), id: element.id });
       });
       this.allUsers = currentUsers;
+   
+      
 
     });
   }
