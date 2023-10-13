@@ -1,10 +1,9 @@
 
 export class User {
 
-  firstName!: string;
-  lastName!: string;
-  email!: string
-  birthDate!: number;
+  company!: string;
+  email!: string;
+  membersince!: string;
   street!: string;
   zipCode!: number;
   city!: string;
@@ -12,10 +11,9 @@ export class User {
 
   toJSON(): any {
     return {
-      firstName: this.firstName,
-      lastName: this.lastName,
+      company: this.company,
       email: this.email,
-      birthDate: this.birthDate,
+      membersince: this.membersince,
       street: this.street,
       zipCode: this.zipCode,
       city: this.city
@@ -24,10 +22,9 @@ export class User {
 
   // ? -> allows to create json without any input
   constructor(obj?: any) {
-    this.firstName = obj ? obj.firstName : ''; //fast if / else request --> if obj exist obj.firstname else ''
-    this.lastName = obj ? obj.lastName : '';
+    this.company = obj ? obj.company : ''; //fast if / else request --> if obj exist obj.firstname else ''
     this.email = obj ? obj.email : '';
-    this.birthDate = obj ? obj.birthDate : '';
+    this.membersince = obj ? obj.membersince : '';
     this.street = obj ? obj.street : '';
     this.zipCode = obj ? obj.zipCode : '';
     this.city = obj ? obj.city : '';

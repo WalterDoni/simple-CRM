@@ -25,6 +25,7 @@ mat-card {
         color: rgba(0, 0, 0, 0.5);
         text-align: start;
         border-bottom: 2px solid gray;
+        height: 48px;
 
         &:first-child {
             padding-left: 16px;
@@ -61,3 +62,4 @@ mat-card {
         }
     }
 }
+

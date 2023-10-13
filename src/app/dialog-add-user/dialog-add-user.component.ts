@@ -10,7 +10,6 @@ import { User } from 'src/models/user.class';
 })
 export class DialogAddUserComponent {
   user = new User();
-  birthDate!: Date;
   loading = false;
   firestore: Firestore = inject(Firestore);
 
@@ -40,10 +39,8 @@ export class DialogAddUserComponent {
 
 
   async saveNewUser() {
-    this.user.birthDate = this.birthDate.getTime();
-    console.log(this.user);
+   this.currentDate();
     this.loading = true;
-    debugger
     const userData = this.user.toJSON();
     await addDoc(this.usersRef(), userData).catch(
       (err) => { console.error(err); }
@@ -55,7 +52,17 @@ export class DialogAddUserComponent {
     )
   }
 
+  currentDate(){
+    let currentDate = new Date();
+    let day = currentDate.getDate();
+    let month = currentDate.getMonth() + 1; 
+    let year = currentDate.getFullYear();
+    return this.user.membersince = `${day}.${month}.${year}`;
+  }
+
   dialogClose() {
     this.dialogRef.close();
   }
+
+  
 }
