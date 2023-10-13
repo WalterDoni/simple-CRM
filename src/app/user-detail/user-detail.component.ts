@@ -20,6 +20,8 @@ export class UserDetailComponent {
   firestore: Firestore = inject(Firestore);
   unsubUserDetail;
   unsubRouteId;
+  name = ['Gaming Grafikkarte','Grafikkarte normal','Curved 4k Monitor','HDMI Monitor','Mechanische Tastatur','Silent Tastatur','RGB Maus','8GB Ram','NextGen Prozessor','Wasserkühlung RGB neu Model 2023']
+  price = [1399,499,349,179,99,19,39,49,399,89]
 
 
   constructor(private route: ActivatedRoute, public dialog: MatDialog) {
@@ -69,29 +71,6 @@ export class UserDetailComponent {
     dialog.componentInstance.userData = new User(this.user);
     dialog.componentInstance.userId = this.userId;
   }
-
-  name!: string;
-  position!: number;
-  price!: number;
-  sales!: string;
-
-  
-data = [
-  {position: 1, name: 'Gaming Grafikkarte', price: '1399€'},
-  {position: 2, name: 'Grafikkarte normal', price: '499€'},
-  {position: 3, name: 'Curved 4k Monitor', price: '349€'},
-  {position: 4, name: 'HDMI Monitor', price: '179€' },
-  {position: 5, name: 'Mechanische Tastatur', price: '99€'},
-  {position: 6, name: 'Silent Tastatur', price: '19€' },
-  {position: 7, name: 'RGB Maus', price: '39€'},
-  {position: 8, name: '8GB Ram', price: '49€',},
-  {position: 9, name: 'NextGen Prozessor', price: '399€', },
-  {position: 10, name: 'Wasserkühlung RGB neu Model 2023', price: '89€', },
-]
-
-  displayedColumns: string[] = ['position', 'name', 'price'];
-  dataSource = this.data;
-
 
 }
 

@@ -46,6 +46,7 @@ export class ItemsComponent {
       total += item['data']['amount'] * item['data']['price'];
     }
     return total;
-    
   }
+  
 }
+

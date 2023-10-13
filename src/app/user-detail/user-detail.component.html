@@ -35,31 +35,21 @@
       </mat-menu>
 </mat-card>
 
-<div style="background-color: white; border-radius: 8px;">
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mt-32 br-8px">
+<mat-card *ngIf="userData.length > 0" class="mt-32">
+  <table  cellspacing="0" class="user-table">
+    <tr>
+      <th>Amount</th>
+      <th>Product</th>
+      <th>Total</th>
+    </tr>
+    
+    <tr *ngFor="let item of userData[0]['amount']; let i = index;" >
 
-  <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
+      <td>{{userData[0]['amount'][i]}} X </td>
+      <td> {{name[i]}}</td>
+      <td>{{ userData[0]['amount'][i] * price[i] }} €</td>
+    </tr>
+   
+  </table>
+</mat-card>
 
-  <!-- Position Column -->
-  <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> Amount </th>
-      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-  </ng-container>
-
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-  </ng-container>
-
-  <!-- Weight Column -->
-  <ng-container matColumnDef="price">
-      <th mat-header-cell *matHeaderCellDef> Purchase date </th>
-      <td mat-cell *matCellDef="let element"> {{element.price}} </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-</div>
