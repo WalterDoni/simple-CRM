@@ -24,6 +24,7 @@ export class UserComponent {
 
   getCleanJson(currentuser: User): {} {
     return {
+      amount: currentuser.amount,
       company: currentuser.company,
       email: currentuser.email,
       street: currentuser.street,

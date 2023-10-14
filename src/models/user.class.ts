@@ -1,6 +1,7 @@
 
 export class User {
-
+  
+  amount!: number[];
   company!: string;
   email!: string;
   membersince!: string;
@@ -11,6 +12,7 @@ export class User {
 
   toJSON(): any {
     return {
+      amount: this.amount,
       company: this.company,
       email: this.email,
       membersince: this.membersince,
@@ -22,6 +24,7 @@ export class User {
 
   // ? -> allows to create json without any input
   constructor(obj?: any) {
+    this.amount = obj ? obj.amount : [0,0,0,0,0,0,0,0,0,0]; 
     this.company = obj ? obj.company : ''; //fast if / else request --> if obj exist obj.firstname else ''
     this.email = obj ? obj.email : '';
     this.membersince = obj ? obj.membersince : '';

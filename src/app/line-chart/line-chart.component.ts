@@ -8,10 +8,10 @@ import { Component } from '@angular/core';
 export class LineChartComponent {
 
   lineChartData = {
-   labels: ["Sun","Sun","Sun","Sun","Sun","Sun"],
+   labels: ["Gaming Grafikkarte","Grafikkarte normal","Curved 4k Monitor","HDMI Monitor","Mechanische Tastatur","Silent Tastatur","RGB Maus","8GB Ram","NextGen Prozessor","Wasserkühlung RGB neu Model 2023"],
    datasets: [{
-    data: [89,54,23,65,43,76],
-    label: 'Name',
+    data: [15,45,33,20,44,60,33,81,10,63],
+    label: 'Product sales',
     fill: true,
     backgroundColor: 'green' ,
     borderColor: 'black',

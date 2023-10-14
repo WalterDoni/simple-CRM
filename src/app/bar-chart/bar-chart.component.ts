@@ -8,10 +8,10 @@ import { Component } from '@angular/core';
 export class BarChartComponent {
 
   barChartData = {
-    labels: ["Sun","Sun","Sun","Sun","Sun","Sun"],
+    labels: ["PC-Rettung","Pixelclub","GamingHausen","Spielekeller","Healthpotion Bar","Die Computerbastler","TechMax","Elektroverleih","Die Computer-Ambulanz","E.sports-Bar-Lex"],
     datasets: [{
-     data: [89,54,23,65,43,76],
-     label: 'Name',
+     data: [89,54,23,65,43,76,45,68,98,12],
+     label: 'Buyed products per company',
      backgroundColor: [
       'rgba(255, 0, 25, 0.7)',
       'rgba(25, 50, 68, 0.7)',
@@ -19,6 +19,11 @@ export class BarChartComponent {
       'rgba(55, 88, 225, 0.7)',
       'rgba(11, 23, 58, 0.7)',
       'rgba(26, 44, 74, 0.7)',
+      'rgba(255, 0, 25, 0.7)',
+      'rgba(25, 50, 68, 0.7)',
+      'rgba(215, 74, 55, 0.7)',
+      'rgba(55, 88, 225, 0.7)',
+     
      ] ,
      
       }

@@ -8,17 +8,17 @@
       </tr>
       
       <tr *ngFor="let item of allItems; let i = index;">
-        <td>{{item['data']['name']}} </td>
-        <td> X {{item['data']['amount']}}</td>
-        <td>{{item['data']['price']}}€</td>
-        <td>{{item['data']['amount'] * item['data']['price']}}€</td>
+        <td>{{ item['data']['name'] }} </td>
+        <td> X {{ calculateAmountOfSingleProduct(i) }}</td>
+        <td>{{ item['data']['price'] }}€</td>
+        <td>{{  calculateAmountOfSingleProduct(i)  * item['data']['price'] }}€</td>
       </tr>
 
       <tr>
         <td></td>
         <td></td>
         <td></td>
-        <td>Total: {{calculateTotal()}}€</td> 
+        <td>Total: {{calculateTotalValueOfAllSales()}}€</td> 
       </tr>
      
     </table>

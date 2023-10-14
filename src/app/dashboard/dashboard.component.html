@@ -1,6 +1,47 @@
 <div class="content">
+    <app-bar-chart></app-bar-chart>
+    <div class="card-container">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Customers</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>10</mat-card-content>
+        </mat-card>
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Sales</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>258</mat-card-content>
+        </mat-card>
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>New Customer this Month</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>3</mat-card-content>
+        </mat-card>
+    </div>
 
-<app-line-chart style="margin-left: -46px;"></app-line-chart>
-<app-bar-chart style="margin-left: 46px;"></app-bar-chart>
-<app-pie-chart style="margin-left: -46px;display: flex;justify-content: center;"></app-pie-chart>
+</div>
+<div class="content mt-32">
+    <mat-card >
+        <table cellspacing="0" class="user-table">
+            <th>Transactions</th>
+            <th></th>
+            <th></th>
+            <tr>
+                <th>Company</th>
+                <th>Price</th>
+                <th>Date</th>
+            </tr>
+
+            <tr *ngFor="let _ of [].constructor(5); let i = index">
+                <td>TestBetrieb</td>
+                <td>30€</td>
+                <td>12.10.2023</td>
+            </tr>
+
+        </table>
+    </mat-card>
+    <app-line-chart></app-line-chart>
+    <!-- <app-pie-chart style="margin-left: -46px;display: flex;justify-content: center;"></app-pie-chart> -->
 </div>

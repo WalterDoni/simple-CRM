@@ -72,8 +72,30 @@ export class UserDetailComponent {
     dialog.componentInstance.userId = this.userId;
   }
 
+
+  calculateTotalAmount(){
+    let totalAmount = 0;
+    let total = this.userData[0]['amount'];
+    for (let i = 0; i < total.length; i++) {
+      totalAmount += total[i];
+    }
+    return totalAmount;
 }
 
+ calculateTotalValue(){
+  let totalValue = 0;
+  let value = this.userData[0]['amount'];
+ 
+  for (let i = 0; i < value.length; i++) {
+    let currValue = 0
+    currValue = this.price[i] * value[i]
+     totalValue += currValue;
+  }
+
+  return totalValue
+ }
+ 
+}
 
 
 
