@@ -5,19 +5,19 @@
             <mat-card-header>
                 <mat-card-title>Customers</mat-card-title>
             </mat-card-header>
-            <mat-card-content>10</mat-card-content>
+            <mat-card-content>{{allUsers.length}}</mat-card-content>
         </mat-card>
         <mat-card>
             <mat-card-header>
-                <mat-card-title>Sales</mat-card-title>
+                <mat-card-title>Products sold</mat-card-title>
             </mat-card-header>
-            <mat-card-content>258</mat-card-content>
+            <mat-card-content>{{ calcProductSales()}}</mat-card-content>
         </mat-card>
         <mat-card>
             <mat-card-header>
-                <mat-card-title>New Customer this Month</mat-card-title>
+                <mat-card-title>Total sales</mat-card-title>
             </mat-card-header>
-            <mat-card-content>3</mat-card-content>
+            <mat-card-content>{{calculateTotalValueOfAllSales()}}</mat-card-content>
         </mat-card>
     </div>
 
@@ -43,5 +43,5 @@
         </table>
     </mat-card>
     <app-line-chart></app-line-chart>
-    <!-- <app-pie-chart style="margin-left: -46px;display: flex;justify-content: center;"></app-pie-chart> -->
+
 </div>

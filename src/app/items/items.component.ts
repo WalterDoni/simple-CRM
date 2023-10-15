@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { DocumentData, Firestore, collection, onSnapshot } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
-import { Items } from 'src/models/item.class';
+import { ProductNamePriceService } from 'src/models/product-name-price.service';
 
 @Component({
   selector: 'app-items',
@@ -12,31 +12,18 @@ import { Items } from 'src/models/item.class';
 export class ItemsComponent {
 
   firestore: Firestore = inject(Firestore);
-  item = new Items;
-  allItems: DocumentData[] = [];
   allUsers: DocumentData[] = [];
+  productNames!: any[];
+  productPrices!: any[];
 
-
-  unsubItems;
+ 
   unsubUsers;
 
-  constructor(public dialog: MatDialog) {
-    this.unsubItems = this.subItems();
+  constructor(public dialog: MatDialog, private productNamePrice: ProductNamePriceService) {
+  
     this.unsubUsers = this.subUsers();
-  }
-
-  subItems() {
-    return onSnapshot(this.itemsRef(), (list) => {
-      let currentItem: DocumentData[] =  [];
-      list.forEach(element => {
-        currentItem.push({ data: element.data(), id: element.id });
-      });
-      this.allItems = currentItem;
-    });
-  }
-
-  itemsRef() {
-    return collection(this.firestore, 'items');
+    this.productNames = productNamePrice.getName();
+    this.productPrices = productNamePrice.getPrice();
   }
 
   subUsers(){
@@ -46,8 +33,6 @@ export class ItemsComponent {
         currentUser.push({ data: element.data()});
       });
       this.allUsers = currentUser;
-      console.log(this.allUsers);
-      console.log(this.allUsers[0]['data']['amount'][0]);
     });
   }
 
@@ -55,24 +40,24 @@ export class ItemsComponent {
     return collection(this.firestore, 'users');
   }
 
+  ngonDestroy() {
+    this.unsubUsers();
+  }
 
   calculateAmountOfSingleProduct(i: number) {
     let totalAmountSingleProduct = 0;
-    for (let v = 0; v < this.allUsers.length; v++) {
-      let currentUser = this.allUsers[v]['data']['amount'];
-   
+    this.allUsers.forEach((user) => {
+      let currentUser = user['data']['amount'];
       totalAmountSingleProduct += currentUser[i];
-    }
-
+    });
     return totalAmountSingleProduct;
   }
 
-
   calculateTotalValueOfAllSales(): number {
     let totalValue = 0;
-    for (let i = 0; i < this.allItems.length; i++) {
-      totalValue += this.calculateAmountOfSingleProduct(i) * this.allItems[i]['data']['price'];
-    }
+    this.productPrices.forEach((item, i) => {
+      totalValue += this.calculateAmountOfSingleProduct(i) * item;
+    });
     return totalValue;
   }
   

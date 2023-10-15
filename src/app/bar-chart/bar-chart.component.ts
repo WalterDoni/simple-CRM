@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { DocumentData, Firestore, collection, onSnapshot } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-bar-chart',
@@ -7,8 +8,50 @@ import { Component } from '@angular/core';
 })
 export class BarChartComponent {
 
+  firestore: Firestore = inject(Firestore);
+  users!: any[];
+  label!: any[];
+  ladeldate = ['PC-Rettung', 'Pixelclub', 'GamingHausen', 'Spielekeller', 'Healthpotion Bar', 'Die Computerbastler', 'TechMax', 'Elektroverleih', 'Die Computer-Ambulanz', 'E.sports-Bar-Lex']
+  unsubUsers;
+
+  constructor(){
+    this.unsubUsers = this.subUser();
+ 
+  }
+
+  subUser(){
+    return onSnapshot(this.usersRef(), (list) =>{
+      let currentUser: DocumentData[] = [];
+      list.forEach(element => {
+        currentUser.push({ data: element.data()});
+      });
+      this.users = currentUser;
+      this.getCompanyNames();
+    });
+  }
+
+  usersRef(){
+    return collection(this.firestore, 'users');
+  }
+
+  ngonDestroy() {
+    this.unsubUsers();
+  }
+
+  getCompanyNames() {
+  
+    this.label = [];
+  
+    this.users.forEach(name => {
+      this.label.push(name['data']['company']);
+    });
+  
+    console.log(this.label);
+    console.log(this.ladeldate);
+  }
+  
   barChartData = {
-    labels: ["PC-Rettung","Pixelclub","GamingHausen","Spielekeller","Healthpotion Bar","Die Computerbastler","TechMax","Elektroverleih","Die Computer-Ambulanz","E.sports-Bar-Lex"],
+    labels: this.ladeldate,
     datasets: [{
      data: [89,54,23,65,43,76,45,68,98,12],
      label: 'Buyed products per company',

@@ -6,6 +6,8 @@ import { ActivatedRoute } from '@angular/router';
 import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
 import { DialogEditUserNameEmailComponent } from '../dialog-edit-user-name-email/dialog-edit-user-name-email.component';
 import { User } from 'src/models/user.class';
+import { ProductNamePriceService } from 'src/models/product-name-price.service';
+
 
 @Component({
   selector: 'app-user-detail',
@@ -20,13 +22,16 @@ export class UserDetailComponent {
   firestore: Firestore = inject(Firestore);
   unsubUserDetail;
   unsubRouteId;
-  name = ['Gaming Grafikkarte','Grafikkarte normal','Curved 4k Monitor','HDMI Monitor','Mechanische Tastatur','Silent Tastatur','RGB Maus','8GB Ram','NextGen Prozessor','Wasserkühlung RGB neu Model 2023']
-  price = [1399,499,349,179,99,19,39,49,399,89]
+  name!: any[];
+  price!: any[];
 
 
-  constructor(private route: ActivatedRoute, public dialog: MatDialog) {
+
+  constructor(private route: ActivatedRoute, public dialog: MatDialog, private productNamePrice: ProductNamePriceService) {
     this.unsubUserDetail = this.subUserDetail();
     this.unsubRouteId = this.subRouteId();
+    this.name = productNamePrice.getName();
+    this.price = productNamePrice.getPrice();
 
   }
 
