@@ -38,7 +38,8 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
 import { ItemsComponent } from './items/items.component';
- 
+import {MatSortModule} from '@angular/material/sort';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,6 +81,7 @@ import { ItemsComponent } from './items/items.component';
     NgChartsModule,
     MatTableModule,
     MatPaginatorModule,
+    MatSortModule,
 
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),

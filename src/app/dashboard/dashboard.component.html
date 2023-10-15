@@ -17,27 +17,23 @@
             <mat-card-header>
                 <mat-card-title>Total sales</mat-card-title>
             </mat-card-header>
-            <mat-card-content>{{calculateTotalValueOfAllSales()}}</mat-card-content>
+            <mat-card-content>{{calculateTotalValueOfAllSales()}} €</mat-card-content>
         </mat-card>
     </div>
 
 </div>
 <div class="content mt-32">
-    <mat-card >
-        <table cellspacing="0" class="user-table">
-            <th>Transactions</th>
-            <th></th>
-            <th></th>
+    <mat-card>
+        <table matSort (matSortChange)="sortData($event)" cellspacing="0" class="user-table">
+        <th style="display: flex;align-items: center; border-bottom: unset;">Sort companies based on their purchasing power:</th>
             <tr>
-                <th>Company</th>
-                <th>Price</th>
-                <th>Date</th>
+                <th mat-sort-header="name">Name</th>
+                <th mat-sort-header="value">Price</th>
             </tr>
 
-            <tr *ngFor="let _ of [].constructor(5); let i = index">
-                <td>TestBetrieb</td>
-                <td>30€</td>
-                <td>12.10.2023</td>
+            <tr *ngFor="let dessert of valueSort">
+                <td>{{dessert.name}}</td>
+                <td>{{dessert.value}}</td>
             </tr>
 
         </table>

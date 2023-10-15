@@ -1,9 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { DocumentData, Firestore, collection, onSnapshot } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
-import { Items } from 'src/models/item.class';
+import { Sort } from '@angular/material/sort';
 import { ProductNamePriceService } from 'src/models/product-name-price.service';
-
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,15 +11,20 @@ import { ProductNamePriceService } from 'src/models/product-name-price.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
+  @Input('matSortStart')
+  start!:  'desc';
+
   firestore: Firestore = inject(Firestore);
   allUsers: DocumentData[] = [];
   productPrices!: any[];
+  valueSort: { name: string, value: number }[] = [];
 
   unsubUsers;
 
   constructor(public dialog: MatDialog, private productNamePrice: ProductNamePriceService) {
     this.unsubUsers = this.subUsers();
-    this.productPrices =  productNamePrice.getPrice();
+    this.productPrices = productNamePrice.getPrice();
+
   }
 
   ngonDestroy() {
@@ -33,7 +38,7 @@ export class DashboardComponent {
         currentUsers.push({ data: element.data() });
       });
       this.allUsers = currentUsers;
-      console.log(this.allUsers);
+      this.calculateTotalValueOfCompany();
     });
   }
 
@@ -70,6 +75,44 @@ export class DashboardComponent {
     return totalValue;
   }
 
+  calculateTotalValueOfCompany() {
+    let value = 0;
+    let totalValue = 0;
+    for (let i = 0; i < this.allUsers.length; i++) {
+      totalValue = 0;
+      for (let v = 0; v < this.allUsers[i]['data']['amount'].length; v++) {
+        value = this.allUsers[i]['data']['amount'][v] * this.productPrices[v];
+        totalValue += value;
+      }
+      let companyName = this.allUsers[i]['data']['company'];
+      let companyValue = { name: companyName, value: totalValue };
+      if (this.valueSort.length < this.allUsers.length) {
+        this.valueSort.push(companyValue);
+      }
+    }
+    return totalValue;
+  }
 
+  sortData(sort: Sort) {
+    const data = this.valueSort.slice();
+    if (!sort.active || sort.direction === '') {
+      this.valueSort = data;
+      return;
+    }
+
+    this.valueSort = data.sort((a, b) => {
+      const isAsc = sort.direction === '';
+      switch (sort.active) {
+        case 'name':
+          return isAsc ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
+        case 'value':
+          return isAsc ? b.value - a.value : a.value - b.value;
+        default:
+          return 0;
+      }
+    });
+
+  }
 }
+
 

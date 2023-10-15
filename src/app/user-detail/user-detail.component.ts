@@ -39,7 +39,6 @@ export class UserDetailComponent {
 
     this.route.params.subscribe(paramsId => {
       this.userId = paramsId['id'];
-      console.log(this.userId);
     });
   }
 
@@ -49,7 +48,6 @@ export class UserDetailComponent {
         if (element.id == this.userId) {
           this.userData.push(element.data());
           this.user = this.userData[0] as User
-          console.log(this.userData);
         }
       })
     })
@@ -90,13 +88,11 @@ export class UserDetailComponent {
  calculateTotalValue(){
   let totalValue = 0;
   let value = this.userData[0]['amount'];
- 
   for (let i = 0; i < value.length; i++) {
     let currValue = 0
     currValue = this.price[i] * value[i]
      totalValue += currValue;
   }
-
   return totalValue
  }
  

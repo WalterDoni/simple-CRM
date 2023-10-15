@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { DocumentData, Firestore, collection, onSnapshot } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-line-chart',
@@ -6,6 +7,29 @@ import { Component } from '@angular/core';
   styleUrls: ['./line-chart.component.scss']
 })
 export class LineChartComponent {
+ 
+  firestore: Firestore = inject(Firestore);
+  users!: any[];
+  dataValue!: number[];
+
+ 
+
+  constructor(){
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   lineChartData = {
    labels: ["Gaming Grafikkarte","Grafikkarte normal","Curved 4k Monitor","HDMI Monitor","Mechanische Tastatur","Silent Tastatur","RGB Maus","8GB Ram","NextGen Prozessor","Wasserkühlung RGB neu Model 2023"],
