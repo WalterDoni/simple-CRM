@@ -12,9 +12,8 @@ export class Items {
     };
   }
 
-  // ? -> allows to create json without any input
-  constructor(obj?: any) {
-    this.amount = obj ? obj.amount : ''; //fast if / else request --> if obj exist obj.firstname else ''
+   constructor(obj?: any) {
+    this.amount = obj ? obj.amount : ''; 
     this.price = obj ? obj.price : '';
   }
 
