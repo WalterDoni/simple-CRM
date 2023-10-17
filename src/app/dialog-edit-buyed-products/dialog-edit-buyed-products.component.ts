@@ -4,19 +4,22 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/models/user.class';
 
 @Component({
-  selector: 'app-dialog-edit-address',
-  templateUrl: './dialog-edit-address.component.html',
-  styleUrls: ['./dialog-edit-address.component.scss']
+  selector: 'app-dialog-edit-buyed-products',
+  templateUrl: './dialog-edit-buyed-products.component.html',
+  styleUrls: ['./dialog-edit-buyed-products.component.scss']
 })
 
-export class DialogEditAddressComponent {
+export class DialogEditBuyedProductsComponent {
   userData: User = new User();
+  index!: number;
   userId: string = '';
   loading: boolean = false;
   firestore: Firestore = inject(Firestore)
 
-  constructor(private dialogRef: MatDialogRef<DialogEditAddressComponent>) { }
 
+  constructor(public dialogRef: MatDialogRef<DialogEditBuyedProductsComponent>) { }
+
+  
   dialogClose() {
     this.dialogRef.close();
   }
@@ -27,7 +30,7 @@ export class DialogEditAddressComponent {
     await updateDoc(doc(selectedUser, this.userId), this.userData.toJSON());
     this.loading = false;
     this.dialogRef.close();
-   
   }
+
 }
 

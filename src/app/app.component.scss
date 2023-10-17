@@ -1,51 +1,56 @@
-.mat-drawer-container{
+.mat-drawer-container {
     height: 100vh;
-    background-color: wheat;
-    
+    background-color: beige;
+
+
 }
 
 .menu {
     cursor: pointer;
-    color: wheat;
+    color: black;
 }
 
-.sidenav{
+.sidenav {
     width: 300px;
-    color: wheat;
-    background-color: #3f51b5;
+    color: black;
+    background: rgb(240,240,240);
+    background: linear-gradient(90deg, rgba(240,240,240,1) 0%, rgba(193,193,193,1) 100%);
     box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
-    
+
 }
 
-.sidenav-logo-container{
+.sidenav-logo-container {
     padding-left: 16px;
     padding-right: 16px;
-    border-bottom: 1px solid rgba(0,0,0, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     min-height: 56px;
     display: flex;
     align-items: center;
- 
-    
 
-    img{
+
+
+    img {
         padding-top: 16px;
         padding-bottom: 16px;
     }
 }
 
-mat-toolbar, mat-toolbar-row {
+mat-toolbar,
+mat-toolbar-row {
     min-height: 56px;
     height: 56px;
-    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2);  
+    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2);
+    background: rgb(240,240,240);
+    background: linear-gradient(180deg, rgba(240,240,240,1) 0%, rgba(193,193,193,1) 100%);
 }
 
-.menu-list{
+.menu-list {
     list-style-type: none;
     padding: 30px 0px 0px 0px;
     margin: 0;
 
 
-    li{
+    li {
         padding-left: 16px;
         padding-right: 16px;
         height: 48px;
@@ -54,31 +59,31 @@ mat-toolbar, mat-toolbar-row {
         cursor: pointer;
         font-size: 24px;
 
-    mat-icon{
-        width: 40px;
-        height: 40px;
-        font-size: 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        
-    }
+        mat-icon {
+            width: 40px;
+            height: 40px;
+            font-size: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
 
 
-    &:hover{
-        background-color: rgba(0,0,0,0.1);
-    }
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
     }
 }
 
-.router-container{
+.router-container {
     padding-left: 56px;
     padding-right: 56px;
     padding-top: 16px;
 }
 
 
-.legal-notice{
+.legal-notice {
     position: absolute;
     bottom: 120px;
     width: 100%;

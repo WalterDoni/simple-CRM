@@ -43,7 +43,7 @@
       <th>Total</th>
     </tr>
 
-    <tr *ngFor="let item of userData[0]['amount']; let i = index;">
+    <tr *ngFor="let item of userData[0]['amount']; let i = index;" (click)="openDialogEditAmounts(i)">
       <td>{{userData[0]['amount'][i]}} X </td>
       <td> {{name[i]}}</td>
       <td>{{ userData[0]['amount'][i] * price[i] }} €</td>

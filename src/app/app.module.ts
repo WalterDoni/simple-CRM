@@ -39,6 +39,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
 import { ItemsComponent } from './items/items.component';
 import {MatSortModule} from '@angular/material/sort';
+import { DialogEditBuyedProductsComponent } from './dialog-edit-buyed-products/dialog-edit-buyed-products.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import {MatSortModule} from '@angular/material/sort';
     HistoryChartComponent,
     LegalNoticeComponent,
     ItemsComponent,
+    DialogEditBuyedProductsComponent,
     
   ],
   imports: [

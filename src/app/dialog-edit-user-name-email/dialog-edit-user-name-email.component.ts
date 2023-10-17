@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { Firestore } from '@angular/fire/firestore';
+import { Firestore, collection, doc, updateDoc } from '@angular/fire/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
-import { DocumentData } from 'rxfire/firestore/interfaces';
 import { User } from 'src/models/user.class';
 
 @Component({
@@ -9,25 +8,32 @@ import { User } from 'src/models/user.class';
   templateUrl: './dialog-edit-user-name-email.component.html',
   styleUrls: ['./dialog-edit-user-name-email.component.scss']
 })
+
 export class DialogEditUserNameEmailComponent {
-  userData = new User;
-  userId!:string;
-  firestore: Firestore = inject(Firestore);
-  loading = false;
+  userData: User = new User();
+  userId: string = '';
+  loading: boolean = false;
+  firestore: Firestore = inject(Firestore)
+
 
   constructor(public dialogRef: MatDialogRef<DialogEditUserNameEmailComponent>) { }
 
   dialogClose() {
     this.dialogRef.close();
-
   }
 
-  changeSelectedUserDetails() {
-    console.log('test');
-
+  async changeSelectedUserDetails() {
+    this.loading = true;
+    let selectedUser = collection(this.firestore, 'users')
+    await updateDoc(doc(selectedUser, this.userId), this.userData.toJSON());
+    this.loading = false;
+    this.dialogRef.close();
   }
-
-
-
 
 }
+
+
+
+
+
+

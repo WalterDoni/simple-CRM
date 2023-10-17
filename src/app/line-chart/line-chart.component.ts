@@ -50,8 +50,6 @@ export class LineChartComponent {
       }
       this.dataValue.push(value);
     }
-    console.log(this.dataValue);
-
   }
 
 
