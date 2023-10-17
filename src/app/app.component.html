@@ -1,6 +1,6 @@
 <mat-drawer-container class="mat-drawer-container" autosize>
   <mat-drawer #drawer class="sidenav" [opened]="true" mode="side">
-    <div class="sidenav-logo-container"><img src="./assets/img/logo.png" alt=""></div>
+    <div class="sidenav-logo-container"><img src="./assets/img/logo2.png" alt=""></div>
     <ul class="menu-list">
       <li routerLink="/dashboard"><mat-icon>space_dashboard</mat-icon>Dashboard</li>
       <li routerLink="/user"><mat-icon>person</mat-icon>User</li>
@@ -9,17 +9,15 @@
     <ul class="menu-list legal-notice">
       <li routerLink="/legal-notice"><mat-icon>info</mat-icon>Legal notice</li>
     </ul>
-
   </mat-drawer>
 
   <div>
     <mat-toolbar color="primary">
       <mat-toolbar-row>
         <mat-icon class="menu" (click)="drawer.toggle()">menu</mat-icon>
-        <span style="padding-left: 25px;color: black;">Simple CRM</span>
+        <span class="headline-text">Simple CRM</span>
       </mat-toolbar-row>
     </mat-toolbar>
-
     <div class="router-container">
       <router-outlet></router-outlet>
     </div>

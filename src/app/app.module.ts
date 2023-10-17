@@ -40,6 +40,8 @@ import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
 import { ItemsComponent } from './items/items.component';
 import {MatSortModule} from '@angular/material/sort';
 import { DialogEditBuyedProductsComponent } from './dialog-edit-buyed-products/dialog-edit-buyed-products.component';
+import { LoginComponent } from './login/login.component';
+
 
 @NgModule({
   declarations: [
@@ -57,6 +59,7 @@ import { DialogEditBuyedProductsComponent } from './dialog-edit-buyed-products/d
     LegalNoticeComponent,
     ItemsComponent,
     DialogEditBuyedProductsComponent,
+    LoginComponent,
     
   ],
   imports: [
@@ -84,7 +87,7 @@ import { DialogEditBuyedProductsComponent } from './dialog-edit-buyed-products/d
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-
+   
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
   ],
