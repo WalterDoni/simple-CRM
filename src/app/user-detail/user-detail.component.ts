@@ -20,7 +20,9 @@ export class UserDetailComponent {
   user = new User;
   userId!:string;
   collectionInstance: any;
-  userData: DocumentData[] = []
+  userData: DocumentData[] = [];
+  index!: number;
+  amount!: number;
   firestore: Firestore = inject(Firestore);
   name!: string[];
   price!: number[];
@@ -80,11 +82,14 @@ export class UserDetailComponent {
   }
 
   openDialogEditAmounts(i: number) {
-    
     const dialog = this.dialog.open(DialogEditBuyedProductsComponent);
     dialog.componentInstance.userData = new User(this.user);
     dialog.componentInstance.userId = this.userId;
-    dialog.componentInstance.index = i;
+    this.index = i;
+    this.amount = this.userData[0]['amount'][i];
+    dialog.componentInstance.index = this.index;
+    dialog.componentInstance.amount = this.amount;
+    
   }
 
   //-----Calculate-Functions----//

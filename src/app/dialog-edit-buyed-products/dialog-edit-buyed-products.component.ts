@@ -9,16 +9,19 @@ import { User } from 'src/models/user.class';
   styleUrls: ['./dialog-edit-buyed-products.component.scss']
 })
 
-export class DialogEditBuyedProductsComponent {
+export class DialogEditBuyedProductsComponent{
   userData: User = new User();
   index!: number;
+  amount!: number;
   userId: string = '';
   loading: boolean = false;
   firestore: Firestore = inject(Firestore)
+  
 
-
-  constructor(public dialogRef: MatDialogRef<DialogEditBuyedProductsComponent>) { }
-
+  constructor(public dialogRef: MatDialogRef<DialogEditBuyedProductsComponent>) {
+  }
+ 
+ 
   
   dialogClose() {
     this.dialogRef.close();
@@ -26,7 +29,8 @@ export class DialogEditBuyedProductsComponent {
 
   async changeSelectedUserDetails() {
     this.loading = true;
-    let selectedUser = collection(this.firestore, 'users')
+    let selectedUser = collection(this.firestore, 'users');
+    this.userData['amount'][this.index] = this.amount
     await updateDoc(doc(selectedUser, this.userId), this.userData.toJSON());
     this.loading = false;
     this.dialogRef.close();

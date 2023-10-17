@@ -13,15 +13,18 @@ export class DialogEditAddressComponent {
   userData: User = new User();
   userId: string = '';
   loading: boolean = false;
-  firestore: Firestore = inject(Firestore)
+  firestore: Firestore = inject(Firestore);
+  
 
-  constructor(private dialogRef: MatDialogRef<DialogEditAddressComponent>) { }
+  constructor(private dialogRef: MatDialogRef<DialogEditAddressComponent>) {
+   }
 
   dialogClose() {
     this.dialogRef.close();
   }
 
   async changeSelectedUserDetails() {
+  
     this.loading = true;
     let selectedUser = collection(this.firestore, 'users')
     await updateDoc(doc(selectedUser, this.userId), this.userData.toJSON());
