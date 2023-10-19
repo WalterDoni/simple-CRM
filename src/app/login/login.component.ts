@@ -27,7 +27,7 @@ export class LoginComponent {
   loginWithGoogle() {
     this.authService.signInWithGoogle().then((res: any) => {
       this.router.navigateByUrl('dashboard');
-      this.toggleShowLoginWindow();
+      this.closeLogInWIndow();
     }).catch((error: any) => {
       console.error(error);
     })
@@ -37,7 +37,7 @@ export class LoginComponent {
     let userData = Object.assign(this.loginForm.value, { email: this.loginForm.value.email });
     this.authService.signInWithEmailAndPassword(userData).then((res: any) => {
       this.router.navigateByUrl('dashboard');
-      this.toggleShowLoginWindow();
+      this.closeLogInWIndow();
     }).catch((error: any) => {
       console.error(error);
     })
@@ -47,7 +47,7 @@ export class LoginComponent {
     let userData = Object.assign(this.loginForm.value, { email: "guest@guest.at", password: "guest123" });
     this.authService.signInWithEmailAndPassword(userData).then((res: any) => {
       this.router.navigateByUrl('dashboard');
-      this.toggleShowLoginWindow();
+      this.closeLogInWIndow();
     }).catch((error: any) => {
       console.error(error);
     })
@@ -56,6 +56,10 @@ export class LoginComponent {
   toggleShowLoginWindow() {
     LoginComponent.showLoginWindow = true;
     SignupComponent.showSignUpWindow = false;
+  }
+
+  closeLogInWIndow(){
+    LoginComponent.showLoginWindow = true;
   }
 
   getShowLoginWindow() {

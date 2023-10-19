@@ -26,9 +26,9 @@
                     <button mat-button (click)="loginWithEmailAndPassword()">Login</button>
                     <button mat-button (click)="loginAsGuest()">Login as Guest</button>
                     <button (click)="loginWithGoogle()" mat-button>Login with Google</button>
-                    <div>
-                        <p>Don't have an account?</p><button (click)="toggleShowLoginWindow()" routerLink="/signup" mat-button>Sign-Up</button>
-                    </div>
+                </div>
+                <div class="signUp-container">
+                    <p>Don't have an account?</p><p style="font-weight: 800; color: blue; padding-left: 5px;"(click)="toggleShowLoginWindow()">Sign-Up</p>
                 </div>
             </div>
         </div>

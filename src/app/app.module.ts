@@ -34,7 +34,6 @@ import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 import { NgChartsModule } from 'ng2-charts';
 import { LineChartComponent } from './line-chart/line-chart.component';
 import { BarChartComponent } from './bar-chart/bar-chart.component';
-import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { HistoryChartComponent } from './history-chart/history-chart.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -58,15 +57,12 @@ import { SignupComponent } from './signup/signup.component';
     DialogEditUserNameEmailComponent,
     LineChartComponent,
     BarChartComponent,
-    PieChartComponent,
     HistoryChartComponent,
     LegalNoticeComponent,
     ItemsComponent,
     DialogEditBuyedProductsComponent,
     LoginComponent,
     SignupComponent,
-
-
   ],
   imports: [
     BrowserModule,
