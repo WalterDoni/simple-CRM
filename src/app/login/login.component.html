@@ -1,4 +1,4 @@
-<div class="main">
+<div class="main" [ngClass]="{'d-none': getShowLoginWindow()}">
     <div class="content">
         <h1 mat-dialog-title>Login</h1>
         <div [formGroup]="loginForm" mat-dialog-content>
@@ -27,7 +27,7 @@
                     <button mat-button (click)="loginAsGuest()">Login as Guest</button>
                     <button (click)="loginWithGoogle()" mat-button>Login with Google</button>
                     <div>
-                        <p>Don't have an account?</p><button routerLink="/signup" mat-button>Sign-Up</button>
+                        <p>Don't have an account?</p><button (click)="toggleShowLoginWindow()" routerLink="/signup" mat-button>Sign-Up</button>
                     </div>
                 </div>
             </div>

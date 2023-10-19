@@ -1,7 +1,7 @@
-<div class="main">
+<div class="main" [ngClass]="{'d-none': getShowSigninWindow()}">
     <div class="content">
-        <h1 mat-dialog-title>Login</h1>
-        <div [formGroup]="loginForm" mat-dialog-content>
+        <h1 mat-dialog-title>Register</h1>
+        <div [formGroup]="registerForm" mat-dialog-content>
 
             <div style="margin-top: 5px;">
 
@@ -9,26 +9,23 @@
                     <mat-form-field class="mr-16" appearance="outline">
                         <mat-label>Email</mat-label>
                         <input matInput formControlName="email" type="email" placeholder="Email">
-                        <mat-error class="error" *ngIf="loginForm.controls['email'].hasError('required')">Email is
+                        <mat-error  *ngIf="registerForm.controls['email'].hasError('required')">Email is
                             required or has the wrong form</mat-error>
                     </mat-form-field>
                     <div>
                         <mat-form-field class="mr-16" appearance="outline">
                             <mat-label>Password</mat-label>
                             <input matInput formControlName="password" placeholder="Password">
-                            <mat-error *ngIf="loginForm.controls['password'].hasError('required')">Password is
+                            <mat-error *ngIf="registerForm.controls['password'].hasError('required')">Password is
                                 required</mat-error>
                         </mat-form-field>
                     </div>
                 </div>
 
                 <div mat-dialog-actions class="btn-container">
-                    <button mat-button (click)="loginWithEmailAndPassword()">Login</button>
-                    <button mat-button>Login as Guest</button>
-                   
-                    <div>
-                        <p>Don't have an account?</p><button routerLink="/signup" mat-button>Sign-Up</button>
-                    </div>
+                    <button (click)="toggleShowLoginWindow()">Test</button>
+                    <button mat-button (click)="signupWithEmailAndPassword()">Register</button>
+        
                 </div>
             </div>
         </div>
