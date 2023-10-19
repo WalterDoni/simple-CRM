@@ -43,6 +43,7 @@ mat-card {
 
     td {
         height: 48px;
+        cursor: pointer;
 
         &:first-child {
             padding-left: 16px;
@@ -52,6 +53,7 @@ mat-card {
 
     tr {
         border-bottom: 2px solid gray;
+
        
 
         &:hover {

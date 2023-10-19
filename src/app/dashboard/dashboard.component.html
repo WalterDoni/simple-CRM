@@ -25,17 +25,16 @@
 <div class="content mt-32">
     <mat-card>
         <table matSort (matSortChange)="sortData($event)" cellspacing="0" class="user-table">
-        <th style="display: flex;align-items: center; border-bottom: unset;">Sort companies based on their purchasing power:</th>
+        <th style="display: flex;align-items: center; border-bottom: unset; height: 32px;">Purchasing power per Company:</th>
             <tr>
-                <th mat-sort-header="name">Name</th>
+                <th style="height:32px;" mat-sort-header="name">Name</th>
                 <th mat-sort-header="value">Price</th>
             </tr>
 
             <tr *ngFor="let company of valueSort">
                 <td>{{company.name}}</td>
-                <td>{{company.value}}</td>
+                <td style="padding-right: 5px;">{{company.value}}€</td>
             </tr>
-
         </table>
     </mat-card>
     <app-line-chart></app-line-chart>
