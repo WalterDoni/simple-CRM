@@ -1,11 +1,11 @@
 <h1 mat-dialog-title>Edit amount of buyed product.</h1>
-<div mat-dialog-content>
+<div mat-dialog-content style="width: 500px;">
 
     <div style="margin-top: 5px;">
 
         <div>
             <div>
-                <mat-form-field class="mr-16" appearance="outline">
+                <mat-form-field class="mr-16 w100" appearance="outline">
                     <mat-label>Amount</mat-label>
                     <input [disabled]="loading" [(ngModel)]="amount" type="number" min="0" max="1000" matInput placeholder="Placeholder">
                 </mat-form-field>
@@ -13,6 +13,6 @@
         </div>
 
         <div mat-dialog-actions>
-            <button [disabled]="loading" (click)="dialogClose()" mat-button>Cancel</button>
-            <button [disabled]="loading" (click)="changeSelectedUserDetails()" mat-button cdkFocusInitial>Save</button>
+            <button class="btnCancel" [disabled]="loading" (click)="dialogClose()" mat-button>Cancel</button>
+            <button class="btnSave" [disabled]="loading" (click)="changeSelectedUserDetails()" mat-button >Save</button>
         </div>

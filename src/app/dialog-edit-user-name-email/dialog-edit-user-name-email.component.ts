@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Firestore, collection, doc, updateDoc } from '@angular/fire/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/models/user.class';
-import { UserDetailComponent } from '../user-detail/user-detail.component';
+
 
 @Component({
   selector: 'app-dialog-edit-user-name-email',
@@ -17,7 +17,7 @@ export class DialogEditUserNameEmailComponent {
   firestore: Firestore = inject(Firestore)
 
 
-  constructor(public dialogRef: MatDialogRef<DialogEditUserNameEmailComponent>, private edit: UserDetailComponent) { }
+  constructor(public dialogRef: MatDialogRef<DialogEditUserNameEmailComponent>) { }
 
   dialogClose() {
     this.dialogRef.close();
@@ -27,7 +27,6 @@ export class DialogEditUserNameEmailComponent {
     this.loading = true;
     let selectedUser = collection(this.firestore, 'users')
     await updateDoc(doc(selectedUser, this.userId), this.userData.toJSON());
-    this.edit.subUserDetail();
     this.loading = false;
     this.dialogRef.close();
   }

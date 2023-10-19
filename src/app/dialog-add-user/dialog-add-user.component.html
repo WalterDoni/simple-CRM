@@ -3,13 +3,13 @@
 <div mat-dialog-content>
 
     <div style="margin-top: 5px;">
-        <mat-form-field class="mr-16" appearance="outline">
+        <mat-form-field class="mr-16 w100" appearance="outline">
             <mat-label>Company</mat-label>
             <input [disabled] = "loading" [(ngModel)] = "user.company" matInput placeholder="Name of the Company">
         </mat-form-field>
 
     <div>
-        <mat-form-field class="mr-16" appearance="outline">
+        <mat-form-field class="mr-16 w100" appearance="outline">
             <mat-label>E-mail</mat-label>
             <input [disabled] = "loading" [(ngModel)] = "user.email"  matInput placeholder="Placeholder">
         </mat-form-field>
@@ -17,7 +17,7 @@
     </div>
 
     <div>
-        <mat-form-field class="mr-16" appearance="outline">
+        <mat-form-field class="mr-16 w100" appearance="outline">
             <mat-label>Street + Number</mat-label>
             <input [disabled] = "loading" [(ngModel)] = "user.street" matInput placeholder="Placeholder">
         </mat-form-field>
@@ -30,7 +30,7 @@
             <input [disabled] = "loading" [(ngModel)] = "user.zipCode"  matInput placeholder="Placeholder">
         </mat-form-field>
 
-        <mat-form-field class="mr-16" appearance="outline">
+        <mat-form-field  appearance="outline">
             <mat-label>City</mat-label>
             <input [disabled] = "loading" [(ngModel)] = "user.city"  matInput placeholder="Placeholder">
         </mat-form-field>
@@ -38,6 +38,6 @@
 
 </div>
 <div mat-dialog-actions>
-    <button [disabled] = "loading"  (click)="dialogClose()"mat-button >Cancel</button>
-    <button [disabled] = "loading" (click)="saveNewUser()"mat-button cdkFocusInitial>Save</button>
+    <button class="btnCancel" [disabled] = "loading"  (click)="dialogClose()" mat-button >Cancel</button>
+    <button class="btnSave" [disabled] = "loading" (click)="saveNewUser()" mat-button >Save</button>
 </div>

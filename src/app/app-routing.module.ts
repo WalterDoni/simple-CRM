@@ -6,7 +6,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
 import { ItemsComponent } from './items/items.component';
 import { SignupComponent } from './signup/signup.component';
-import { LoginComponent } from './login/login.component';
+
 
 
 const routes: Routes = [
