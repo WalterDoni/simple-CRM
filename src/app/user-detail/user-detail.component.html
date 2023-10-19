@@ -1,8 +1,8 @@
-<mat-card class="user-detail-header shadow" *ngIf="userData.length > 0">
+<mat-card class="user-detail-header shadow" *ngIf="user['amount'].length > 0">
   <img src="./assets/img/profile.png" alt="">
   <div class="user-detail">
-    <h2>{{userData[0]['company']}}</h2>
-    {{userData[0]['email']}}
+    <h2>{{user['company']}}</h2>
+    {{user['email']}}
   </div>
   <button mat-icon-button class="right-top-corner" [matMenuTriggerFor]="nameEmailEdit">
     <mat-icon style="color:black">more_vert</mat-icon>
@@ -16,13 +16,13 @@
 
 </mat-card>
 
-<mat-card class="mt-32 shadow" *ngIf="userData.length > 0">
+<mat-card class="mt-32 shadow" *ngIf="user['amount'].length > 0">
   <mat-card-header>
     <mat-card-title>Address</mat-card-title>
   </mat-card-header>
   <mat-card-content style="padding: 0px 0px 16px 16px;">
-    {{userData[0]['street']}}<br>
-    {{userData[0]['zipCode']}} {{userData[0]['city']}}
+    {{user['street']}}<br>
+    {{user['zipCode']}} {{user['city']}}
   </mat-card-content>
   <button mat-icon-button class="right-top-corner" [matMenuTriggerFor]="adressEdit">
     <mat-icon>more_vert</mat-icon>
@@ -35,7 +35,7 @@
   </mat-menu>
 </mat-card>
 
-<mat-card *ngIf="userData.length > 0" class="mt-32">
+<mat-card *ngIf="user['amount'].length > 0" class="mt-32">
   <table cellspacing="0" class="user-table">
     <tr>
       <th>Amount</th>
@@ -43,15 +43,15 @@
       <th>Total</th>
     </tr>
 
-    <tr *ngFor="let item of userData[0]['amount']; let i = index;" (click)="openDialogEditAmounts(i)">
-      <td>{{userData[0]['amount'][i]}} X </td>
+    <tr *ngFor="let item of user['amount']; let i = index;" (click)="openDialogEditAmounts(i)">
+      <td>{{user['amount'][i]}} X </td>
       <td> {{name[i]}}</td>
-      <td>{{ userData[0]['amount'][i] * price[i] }} €</td>
+      <td>{{ user['amount'][i] * price[i] }} €</td>
     </tr>
   </table>
 </mat-card>
 
-<mat-card class="mt-32 shadow" *ngIf="userData.length > 0">
+<mat-card class="mt-32 shadow" *ngIf="user['amount'].length > 0">
   <mat-card-content style="padding: 0px 0px 16px 16px;">
     Total: {{ calculateTotalAmount() }} <br>
     Total: {{ calculateTotalValue() }}

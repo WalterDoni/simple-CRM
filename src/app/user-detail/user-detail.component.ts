@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { DocumentData, Firestore, collection, onSnapshot } from '@angular/fire/firestore';
+import { Firestore, collection, onSnapshot } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 
 import { ActivatedRoute } from '@angular/router';
@@ -18,9 +18,7 @@ import { ProductNamePriceService } from 'src/models/product-name-price.service';
 })
 export class UserDetailComponent {
   user = new User;
-  userId!:string;
-  collectionInstance: any;
-  userData: DocumentData[] = [];
+  userId!: string;
   index!: number;
   amount!: number;
   firestore: Firestore = inject(Firestore);
@@ -28,9 +26,6 @@ export class UserDetailComponent {
   price!: number[];
 
   unsubUserDetail;
-
-
-
 
   constructor(private route: ActivatedRoute, public dialog: MatDialog, private productNamePrice: ProductNamePriceService) {
     this.unsubUserDetail = this.subUserDetail();
@@ -51,8 +46,7 @@ export class UserDetailComponent {
     return onSnapshot(this.usersRef(), (list) => {
       list.forEach(element => {
         if (element.id == this.userId) {
-          this.userData.push(element.data());
-          this.user = this.userData[0] as User;
+          this.user = element.data() as User;
         }
       })
     })
@@ -86,17 +80,17 @@ export class UserDetailComponent {
     dialog.componentInstance.userData = new User(this.user);
     dialog.componentInstance.userId = this.userId;
     this.index = i;
-    this.amount = this.userData[0]['amount'][i];
+    this.amount = this.user['amount'][i];
     dialog.componentInstance.index = this.index;
     dialog.componentInstance.amount = this.amount;
-    
+
   }
 
   //-----Calculate-Functions----//
 
   calculateTotalAmount() {
     let totalAmount = 0;
-    let total = this.userData[0]['amount'];
+    let total = this.user['amount'];
     for (let i = 0; i < total.length; i++) {
       totalAmount += total[i];
     }
@@ -105,7 +99,7 @@ export class UserDetailComponent {
 
   calculateTotalValue() {
     let totalValue = 0;
-    let value = this.userData[0]['amount'];
+    let value = this.user['amount'];
     for (let i = 0; i < value.length; i++) {
       let currValue = 0
       currValue = this.price[i] * value[i]

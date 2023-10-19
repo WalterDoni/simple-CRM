@@ -12,6 +12,26 @@ export class BarChartComponent {
   users!: any[];
   labelsValue!: any[];
   dataValue!: number[];
+  barChartColors = ['rgba(255, 0, 0, 1)',
+    'rgba(0, 205, 0, 1)',
+    'rgba(0, 0, 255, 1)',
+    'rgba(255, 205, 0, 1)',
+    'rgba(255, 0, 255, 1)',
+    'rgba(0, 255, 255, 1)',
+    'rgba(128, 0, 0, 1)',
+    'rgba(0, 128, 0, 1)',
+    'rgba(0, 0, 128, 1)',
+    'rgba(128, 128, 0, 1)',
+    'rgba(128, 0, 128, 1)',
+    'rgba(0, 128, 128, 1)',
+    'rgba(192, 192, 192, 1)',
+    'rgba(128, 128, 128, 1)',
+    'rgba(255, 165, 0, 1)',
+    'rgba(0, 128, 64, 1)',
+    'rgba(128, 64, 0, 1)',
+    'rgba(0, 64, 128, 1)',
+    'rgba(128, 0, 64, 1)',
+    'rgba(64, 0, 128, 1)'];
   barChartData: any;
   unsubUsers;
 
@@ -40,14 +60,6 @@ export class BarChartComponent {
     this.unsubUsers();
   }
 
-  getCompanyNames() {
-    this.labelsValue = [];
-    this.users.forEach(name => {
-      this.labelsValue.push(name['data']['company']);
-    });
-    this.getChartData()
-  }
-
   getAmountPerCompany() {
     this.dataValue = [];
     for (let i = 0; i < this.users.length; i++) {
@@ -60,6 +72,14 @@ export class BarChartComponent {
     }
   }
 
+  getCompanyNames() {
+    this.labelsValue = [];
+    this.users.forEach(name => {
+      this.labelsValue.push(name['data']['company']);
+    });
+    this.getChartData()
+  }
+
   getChartData() {
     if (this.labelsValue.length > 0) {
       this.barChartData = {
@@ -67,19 +87,7 @@ export class BarChartComponent {
         datasets: [{
           data: this.dataValue,
           label: 'Buyed products per company',
-          backgroundColor: [
-            'rgba(255, 0, 25, 0.7)',
-            'rgba(25, 50, 68, 0.7)',
-            'rgba(215, 74, 55, 0.7)',
-            'rgba(55, 88, 225, 0.7)',
-            'rgba(11, 23, 58, 0.7)',
-            'rgba(26, 44, 74, 0.7)',
-            'rgba(255, 0, 25, 0.7)',
-            'rgba(25, 50, 68, 0.7)',
-            'rgba(215, 74, 55, 0.7)',
-            'rgba(55, 88, 225, 0.7)',
-
-          ],
+          backgroundColor: this.barChartColors,
 
         }
         ]

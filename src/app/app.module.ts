@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AngularFireModule } from '@angular/fire/compat'
+import { AngularFireAuthModule } from '@angular/fire/compat/auth'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,7 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
@@ -29,18 +31,20 @@ import { DialogEditAddressComponent } from './dialog-edit-address/dialog-edit-ad
 import { DialogEditUserNameEmailComponent } from './dialog-edit-user-name-email/dialog-edit-user-name-email.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
-import { NgChartsModule} from 'ng2-charts';
+import { NgChartsModule } from 'ng2-charts';
 import { LineChartComponent } from './line-chart/line-chart.component';
 import { BarChartComponent } from './bar-chart/bar-chart.component';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { HistoryChartComponent } from './history-chart/history-chart.component';
-import {MatTableModule} from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
 import { ItemsComponent } from './items/items.component';
-import {MatSortModule} from '@angular/material/sort';
+import { MatSortModule } from '@angular/material/sort';
 import { DialogEditBuyedProductsComponent } from './dialog-edit-buyed-products/dialog-edit-buyed-products.component';
 import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+
 
 
 @NgModule({
@@ -60,7 +64,9 @@ import { LoginComponent } from './login/login.component';
     ItemsComponent,
     DialogEditBuyedProductsComponent,
     LoginComponent,
-    
+    SignupComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -87,7 +93,10 @@ import { LoginComponent } from './login/login.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-   
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
   ],
