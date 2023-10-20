@@ -74,10 +74,15 @@ export class BarChartComponent {
 
   getCompanyNames() {
     this.labelsValue = [];
-    this.users.forEach(name => {
-      this.labelsValue.push(name['data']['company']);
+    this.users.forEach(user => {
+      let companyName = user['data']['company'];
+      if (companyName.length >= 3) {
+        this.labelsValue.push(companyName.substring(0, 5));
+      } else {
+        this.labelsValue.push(companyName);
+      }
     });
-    this.getChartData()
+    this.getChartData();
   }
 
   getChartData() {

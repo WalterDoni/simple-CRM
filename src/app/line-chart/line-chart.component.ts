@@ -11,7 +11,7 @@ export class LineChartComponent {
   firestore: Firestore = inject(Firestore);
   users!: any[];
   dataValue!: number[];
-  labelValue = ["Gaming Grafikkarte", "Grafikkarte normal", "Curved 4k Monitor", "HDMI Monitor", "Mechanische Tastatur", "Silent Tastatur", "RGB Maus", "8GB Ram", "NextGen Prozessor", "Wasserkühlung RGB neu Model 2023"];
+  labelValue = ["GaGr", "Gr no", "Curved", "HDMI", "MecTas", "SilTas", "Maus", "Ram", "NexPro", "Wassküh"];
   lineChartData: any;
   unsubUsers;
 
