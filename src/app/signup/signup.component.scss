@@ -91,3 +91,32 @@
     align-items: center;
     justify-content: center;
 }
+
+.success-window{
+   
+    position: absolute;
+    top: 200px;
+    width: 300px!important;
+    font-size: 32px;
+    height: 100px;
+    background: linear-gradient(57deg, rgba(163,1,230,1) 0%, rgba(82,95,233,1) 35%, rgba(1,191,248,1) 100%);
+    color: white;
+    display: flex!important;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    opacity: 0;
+    animation: fadeInOut 2s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }

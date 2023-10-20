@@ -15,7 +15,8 @@ import { SignupComponent } from '../signup/signup.component';
 export class LoginComponent {
 
   firestore: Firestore = inject(Firestore);
-
+  hide: boolean = true;
+  showLogIn: boolean = false;
   loginForm: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required)
@@ -26,8 +27,12 @@ export class LoginComponent {
 
   loginWithGoogle() {
     this.authService.signInWithGoogle().then((res: any) => {
-      this.router.navigateByUrl('dashboard');
-      this.closeLogInWIndow();
+      this.showLogIn = true;
+      setTimeout(() => {
+        this.showLogIn = false;
+        this.router.navigateByUrl('dashboard');
+        this.closeLogInWIndow();
+      }, 2000);
     }).catch((error: any) => {
       console.error(error);
     })
@@ -36,8 +41,12 @@ export class LoginComponent {
   loginWithEmailAndPassword() {
     let userData = Object.assign(this.loginForm.value, { email: this.loginForm.value.email });
     this.authService.signInWithEmailAndPassword(userData).then((res: any) => {
-      this.router.navigateByUrl('dashboard');
-      this.closeLogInWIndow();
+      this.showLogIn = true;
+      setTimeout(() => {
+        this.showLogIn = false;
+        this.router.navigateByUrl('dashboard');
+        this.closeLogInWIndow();
+      }, 2000);
     }).catch((error: any) => {
       console.error(error);
     })
@@ -46,8 +55,12 @@ export class LoginComponent {
   loginAsGuest() {
     let userData = Object.assign(this.loginForm.value, { email: "guest@guest.at", password: "guest123" });
     this.authService.signInWithEmailAndPassword(userData).then((res: any) => {
-      this.router.navigateByUrl('dashboard');
-      this.closeLogInWIndow();
+      this.showLogIn = true;
+      setTimeout(() => {
+        this.showLogIn = false;
+        this.router.navigateByUrl('dashboard');
+        this.closeLogInWIndow();
+      }, 2000);
     }).catch((error: any) => {
       console.error(error);
     })
@@ -58,7 +71,7 @@ export class LoginComponent {
     SignupComponent.showSignUpWindow = false;
   }
 
-  closeLogInWIndow(){
+  closeLogInWIndow() {
     LoginComponent.showLoginWindow = true;
   }
 

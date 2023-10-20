@@ -15,7 +15,8 @@
                     <div>
                         <mat-form-field class="mr-16" appearance="outline">
                             <mat-label>Password</mat-label>
-                            <input matInput formControlName="password" placeholder="Password">
+                            <input matInput formControlName="password" placeholder="Password" [type]="hide ? 'password' : 'text' ">
+                            <mat-icon (click)=" hide = !hide" matSuffix>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
                             <mat-error *ngIf="loginForm.controls['password'].hasError('required')">Password is
                                 required</mat-error>
                         </mat-form-field>
@@ -23,7 +24,7 @@
                 </div>
 
                 <div mat-dialog-actions class="btn-container">
-                    <button mat-button (click)="loginWithEmailAndPassword()">Login</button>
+                    <button mat-button [disabled]="loginForm.invalid" (click)="loginWithEmailAndPassword()">Login</button>
                     <button mat-button (click)="loginAsGuest()">Login as Guest</button>
                     <button (click)="loginWithGoogle()" mat-button>Login with Google</button>
                 </div>
@@ -32,3 +33,5 @@
                 </div>
             </div>
         </div>
+        <div style="display: none;" [ngClass]="{'success-window': showLogIn}">Login succesfully</div>
+    </div>

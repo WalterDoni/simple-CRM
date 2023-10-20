@@ -10,12 +10,13 @@
                         <mat-label>Email</mat-label>
                         <input matInput formControlName="email" type="email" placeholder="Email">
                         <mat-error  *ngIf="registerForm.controls['email'].hasError('required')">Email is
-                            required or has the wrong form</mat-error>
+                            required</mat-error>
                     </mat-form-field>
                     <div>
                         <mat-form-field class="mr-16" appearance="outline">
                             <mat-label>Password</mat-label>
-                            <input matInput formControlName="password" placeholder="Password">
+                            <input matInput formControlName="password" placeholder="Password" [type]="hide ? 'password' : 'text' ">
+                            <mat-icon (click)=" hide = !hide" matSuffix>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
                             <mat-error *ngIf="registerForm.controls['password'].hasError('required')">Password is
                                 required</mat-error>
                         </mat-form-field>
@@ -24,8 +25,10 @@
 
                 <div mat-dialog-actions class="btn-container">
                     <button mat-button (click)="toggleShowLoginWindow()" routerLink="">Back</button>
-                    <button mat-button (click)="signupWithEmailAndPassword()">Register</button>
-        
+                    <button mat-button [disabled]="registerForm.invalid"  (click)="signupWithEmailAndPassword()">Register</button>
                 </div>
             </div>
         </div>
+         <div style="display: none;" [ngClass]="{'success-window': showSignUp}">Signup succesfully</div>
+    </div>
+       
