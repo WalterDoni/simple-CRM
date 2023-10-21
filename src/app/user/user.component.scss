@@ -49,6 +49,17 @@ mat-card {
             padding-left: 16px;
         }
 
+        @media(max-width: 800px){
+            height: 40px;
+
+            &:first-child {
+                padding-left: 6px;
+            }
+            &:last-child {
+                padding-right: 6px;
+            }
+        }
+
     }
 
     tr {

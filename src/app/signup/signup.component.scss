@@ -28,8 +28,13 @@
     h1 {
         position: absolute;
         top: 50px;
-        font-size: 56px;
+        font-size: 48px;
         font-weight: 500;
+
+        @media(max-width: 640px){
+           top:20px;
+           font-size: 40px;
+        }
     }
 
     div {
@@ -40,25 +45,55 @@
             padding-left: 10%;
             padding-right: 10%;
             width: 80%;
+
+            @media(max-width: 640px){
+                height: 60px;
+                padding-left: 2%;
+                padding-right: 0;
+                width: 95%;
+            }
+            
         }
+    }
+
+    @media(max-width: 640px){
+        width: 500px;
+        height: 350px;
+    }
+
+    @media(max-width: 535px){
+        width: 400px;
+    }
+
+    @media(max-width: 435px){
+        width: 300px;  
+    }
+
+    @media(max-width: 331px){
+        width: 288px;
     }
 }
 
 .btn-container {
     width: 80%;
     position: absolute;
-    bottom: 70px;
+    bottom: 90px;
     display: flex;
     align-items: center;
     justify-content: center;
 
 
     button {
-        width: 100px;
-        height: 40px;
+
         border-radius: 10px;
         margin-right: 10px;
         box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+       
+        @media(max-width: 460px){
+            font-size: 12px;
+            margin-right: 2px;
+            margin-left: 2px;
+         }
     }
 
     button:first-child {
@@ -77,6 +112,9 @@
         border-radius: 10px;
     }
 
+    @media(max-width: 640px){
+        bottom: 55px;
+     }
 }
 
 .d-none {
@@ -96,16 +134,16 @@
    
     position: absolute;
     top: 200px;
-    width: 300px!important;
-    font-size: 32px;
-    height: 100px;
+    width: 290px!important;
+    font-size: 24px;
+    height: 50px;
     background: linear-gradient(57deg, rgba(163,1,230,1) 0%, rgba(82,95,233,1) 35%, rgba(1,191,248,1) 100%);
     color: white;
     display: flex!important;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    opacity: 0;
+    opacity: 1;
     animation: fadeInOut 2s ease-in-out;
 }
 
