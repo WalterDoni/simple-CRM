@@ -18,7 +18,7 @@
     <mat-toolbar color="primary">
       <mat-toolbar-row>
         <mat-icon class="menu" (click)="drawer.toggle()">menu</mat-icon>
-        <mat-icon class="responsive-menu" (click)="hideResponsive = !hideResponsive" >menu</mat-icon>
+        <mat-icon class="responsive-menu" (click)="hideResponsive = !hideResponsive">menu</mat-icon>
         <span class="headline-text">Simple CRM</span>
       </mat-toolbar-row>
     </mat-toolbar>
@@ -30,10 +30,10 @@
   <div class="responsive-container" *ngIf="!hideResponsive">
     <button class="responsive-close-button" (click)="hideResponsive = !hideResponsive">Close</button>
     <div>
-      <a routerLink="/dashboard"><mat-icon>space_dashboard</mat-icon>Dashboard</a>
-      <a routerLink="/user"><mat-icon>person</mat-icon>User</a>
-      <a routerLink="/items"><mat-icon>category</mat-icon>Products</a>
-      <a routerLink="/legal-notice"><mat-icon>info</mat-icon>Legal notice</a>
+      <a routerLink="/dashboard" (click)="hideResponsiveTrue()"><mat-icon>space_dashboard</mat-icon>Dashboard</a>
+      <a routerLink="/user" (click)="hideResponsiveTrue()"><mat-icon>person</mat-icon>User</a>
+      <a routerLink="/items" (click)="hideResponsiveTrue()"><mat-icon>category</mat-icon>Products</a>
+      <a routerLink="/legal-notice" (click)="hideResponsiveTrue()"><mat-icon>info</mat-icon>Legal notice</a>
       <a routerLink="/" (click)="openLogInWIndow()"><mat-icon>logout</mat-icon>Logout</a>
     </div>
 
