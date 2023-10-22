@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, ElementRef, ViewChild, inject } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
@@ -13,6 +13,7 @@ import { LoginComponent } from '../login/login.component';
 export class SignupComponent {
 
   firestore: Firestore = inject(Firestore);
+  showSignUp: boolean = false;
   hide: boolean = true;
   registerForm: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -20,7 +21,13 @@ export class SignupComponent {
   })
 
   static showSignUpWindow: boolean = true;
-  showSignUp: boolean = false;
+
+
+  @ViewChild('emailInput') emailInput!: ElementRef;
+  @ViewChild('emailIsRequired') emailIsRequired!: ElementRef;
+  @ViewChild('passwordInput') passwordInput!: ElementRef;
+  @ViewChild('passwordIsRequired') passwordIsRequired!: ElementRef;
+
 
   constructor(private authService: AuthService) { }
 
@@ -37,13 +44,6 @@ export class SignupComponent {
     })
   }
 
-  test(){
-    this.showSignUp = true;
-    setTimeout(() => {
-      this.showSignUp = false;
-    }, 2000);
-  }
-
   toggleShowLoginWindow() {
     LoginComponent.showLoginWindow = false;
     SignupComponent.showSignUpWindow = true;
@@ -53,6 +53,23 @@ export class SignupComponent {
     return SignupComponent.showSignUpWindow;
   }
 
+  onInputChangeEmail(value: string) {
+  
+    if (value.length < 1 || !value.includes('@')) {
+      this.emailIsRequired.nativeElement.classList.remove('d-none');
+    } else {
+      this.emailIsRequired.nativeElement.classList.add('d-none');
+    }
+  }
+
+  onInputChangePassword(value: string) {
+
+    if (value.length < 6) {
+      this.passwordIsRequired.nativeElement.classList.remove('d-none');
+    } else {
+      this.passwordIsRequired.nativeElement.classList.add('d-none');
+    }
+  }
 
 
 }

@@ -8,28 +8,31 @@
                 <div>
                     <mat-form-field class="mr-16" appearance="outline">
                         <mat-label>Email</mat-label>
-                        <input matInput formControlName="email" type="email" placeholder="Email">
-                        <mat-error class="error" *ngIf="loginForm.controls['email'].hasError('required')">Email is
-                            required or has the wrong form</mat-error>
+                        <input matInput formControlName="email" type="email" placeholder="Email" #emailInput (keyup)="onInputChangeEmail(emailInput.value)">
                     </mat-form-field>
+                    <p #emailIsRequired class="alert-text d-none">Email is required or has the wrong form.</p>
+                    <p #emailIsWrong class="alert-text d-none">There is no account with that email in our system.</p>
                     <div>
                         <mat-form-field class="mr-16" appearance="outline">
                             <mat-label>Password</mat-label>
-                            <input matInput formControlName="password" placeholder="Password" [type]="hide ? 'password' : 'text' ">
-                            <mat-icon (click)=" hide = !hide" matSuffix>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
-                            <mat-error *ngIf="loginForm.controls['password'].hasError('required')">Password is
-                                required</mat-error>
+                            <input matInput formControlName="password" placeholder="Password"[type]="hide ? 'password' : 'text'" #passwordInput (keyup)="onInputChangePassword(passwordInput.value)">
+                            <mat-icon (click)=" hide = !hide" matSuffix>{{ hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </mat-form-field>
+                        <p #passwordIsRequired class="alert-text d-none">Password is required.</p>
+                        <p #passwordIsWrong class="alert-text d-none">Wrong password.</p>
                     </div>
                 </div>
 
                 <div mat-dialog-actions class="btn-container">
-                    <button mat-button [disabled]="loginForm.invalid" (click)="loginWithEmailAndPassword()">Login</button>
+                    <button mat-button [disabled]="loginForm.invalid"
+                        (click)="loginWithEmailAndPassword()">Login</button>
                     <button mat-button (click)="loginAsGuest()">Login as Guest</button>
                     <button (click)="loginWithGoogle()" mat-button>Login with Google</button>
                 </div>
                 <div class="signUp-container">
-                    <p>Don't have an account?</p><p style="font-weight: 800; color: blue; padding-left: 5px;"(click)="toggleShowLoginWindow()">Sign-Up</p>
+                    <p>Don't have an account?</p>
+                    <p style="font-weight: 800; color: blue; padding-left: 5px;" (click)="toggleShowLoginWindow()">
+                        Sign-Up</p>
                 </div>
             </div>
         </div>

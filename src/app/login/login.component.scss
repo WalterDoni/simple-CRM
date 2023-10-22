@@ -125,7 +125,7 @@
 }
 
 .d-none {
-    display: none;
+    display: none!important;
 }
 
 .signUp-container {
@@ -164,4 +164,12 @@
     100% {
       opacity: 0;
     }
+  }
+
+  .alert-text{
+    color: red;
+    display: flex;
+    padding-left: 10%;
+    margin: 0;
+    margin-top: -20px;
   }

@@ -8,18 +8,16 @@
                 <div>
                     <mat-form-field class="mr-16" appearance="outline">
                         <mat-label>Email</mat-label>
-                        <input matInput formControlName="email" type="email" placeholder="Email">
-                        <mat-error  *ngIf="registerForm.controls['email'].hasError('required')">Email is
-                            required</mat-error>
+                        <input matInput formControlName="email" type="email" placeholder="Email" #emailInput (keyup)="onInputChangeEmail(emailInput.value)">
                     </mat-form-field>
+                    <p #emailIsRequired class="alert-text d-none">Email is required or has the wrong form.</p>
                     <div>
                         <mat-form-field class="mr-16" appearance="outline">
                             <mat-label>Password</mat-label>
-                            <input matInput formControlName="password" placeholder="Password" [type]="hide ? 'password' : 'text' ">
+                            <input matInput formControlName="password" placeholder="Password"[type]="hide ? 'password' : 'text'" #passwordInput (keyup)="onInputChangePassword(passwordInput.value)">
                             <mat-icon (click)=" hide = !hide" matSuffix>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
-                            <mat-error *ngIf="registerForm.controls['password'].hasError('required')">Password is
-                                required</mat-error>
                         </mat-form-field>
+                        <p #passwordIsRequired class="alert-text d-none">Your password is to short, use atleast 6 symbols.</p>
                     </div>
                 </div>
 
