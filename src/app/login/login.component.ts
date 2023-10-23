@@ -14,7 +14,7 @@ import { SignupComponent } from '../signup/signup.component';
 
 export class LoginComponent {
 
-  firestore: Firestore = inject(Firestore);
+ 
   hide: boolean = true;
   showLogIn: boolean = false;
   showWrongMessages: boolean = false;

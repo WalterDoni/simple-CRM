@@ -11,9 +11,10 @@
     
     <tr *ngFor="let user of allUsers; let i = index;" [routerLink] = "['/user/' + user['id']]">
    
-      <td >{{user['data']['company']}}</td>
+      <td><button mat-fab class="delete-button" (click)="deleteUser(i, $event)">X</button><p>{{user['data']['company']}}</p></td>
       <td>{{ user['data']['email'].length > 10 ? (user['data']['email'].substring(0, 10) + '...') : user['data']['email'] }}</td>
       <td>{{user['data']['membersince']}}</td>
+     
     </tr>
    
   </table>

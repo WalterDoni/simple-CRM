@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
 import { User } from 'src/models/user.class';
-import { DocumentData, Firestore, collection, doc, onSnapshot } from '@angular/fire/firestore';
+import { DocumentData, Firestore, collection, deleteDoc, doc, onSnapshot } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-user',
@@ -21,18 +21,7 @@ export class UserComponent {
     this.unsubUsers = this.subUsers();
   }
 
-
-  getCleanJson(currentuser: User): {} {
-    return {
-      amount: currentuser.amount,
-      company: currentuser.company,
-      email: currentuser.email,
-      street: currentuser.street,
-      zipCode: currentuser.zipCode,
-      city: currentuser.city,
-    };
-  }
-
+  //----Subscribe-Functions----//
   subUsers() {
     return onSnapshot(this.usersRef(), (list) => {
       const currentUsers: DocumentData[] = [];
@@ -47,6 +36,17 @@ export class UserComponent {
     this.unsubUsers();
   }
 
+  getCleanJson(currentuser: User): {} {
+    return {
+      amount: currentuser.amount,
+      company: currentuser.company,
+      email: currentuser.email,
+      street: currentuser.street,
+      zipCode: currentuser.zipCode,
+      city: currentuser.city,
+    };
+  }
+
   openDialog() {
     this.dialog.open(DialogAddUserComponent);
   }
@@ -59,5 +59,10 @@ export class UserComponent {
     return doc(collection(this.firestore, colID), docID);
   }
 
+  deleteUser(i: any, event: Event) {
+    event.stopPropagation();
+    let id = this.allUsers[i]['id'];
+    deleteDoc(doc(this.firestore, 'users', id));
+  }
 
 }

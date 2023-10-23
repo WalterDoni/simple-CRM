@@ -12,7 +12,7 @@ import { MatSort } from '@angular/material/sort';
 })
 export class DashboardComponent {
   @Input('matSortStart')
-  start!:  'desc';
+  start!: 'desc';
 
   firestore: Firestore = inject(Firestore);
   allUsers: DocumentData[] = [];
@@ -27,9 +27,7 @@ export class DashboardComponent {
 
   }
 
-  ngonDestroy() {
-    this.unsubUsers();
-  }
+  //----Subscribe-Functions----//
 
   subUsers() {
     return onSnapshot(this.usersRef(), (list) => {
@@ -46,6 +44,15 @@ export class DashboardComponent {
     return collection(this.firestore, 'users');
   }
 
+  ngonDestroy() {
+    this.unsubUsers();
+  }
+
+  //----Calculator-Functions----//
+
+  /**
+   * Show the total amount of products sold.
+   */
   calcProductSales() {
     let totalValue = 0;
     this.allUsers.forEach((user) => {
@@ -56,15 +63,6 @@ export class DashboardComponent {
       totalValue += singleUserTotalAmount;
     });
     return totalValue;
-  }
-
-  calculateAmountOfSingleProduct(i: number) {
-    let totalAmountSingleProduct = 0;
-    this.allUsers.forEach((user) => {
-      let currentUser = user['data']['amount'];
-      totalAmountSingleProduct += currentUser[i];
-    });
-    return totalAmountSingleProduct;
   }
 
   calculateTotalValueOfAllSales(): number {
@@ -93,6 +91,17 @@ export class DashboardComponent {
     return totalValue;
   }
 
+  calculateAmountOfSingleProduct(i: number) {
+    let totalAmountSingleProduct = 0;
+    this.allUsers.forEach((user) => {
+      let currentUser = user['data']['amount'];
+      totalAmountSingleProduct += currentUser[i];
+    });
+    return totalAmountSingleProduct;
+  }
+
+  //----Sortfunction---//
+
   sortData(sort: Sort) {
     const data = this.valueSort.slice();
     if (!sort.active || sort.direction === '') {
@@ -111,8 +120,8 @@ export class DashboardComponent {
           return 0;
       }
     });
-
   }
+  
 }
 
 

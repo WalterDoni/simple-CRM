@@ -17,12 +17,10 @@ export class DialogEditBuyedProductsComponent{
   loading: boolean = false;
   firestore: Firestore = inject(Firestore)
   
-
+  
   constructor(public dialogRef: MatDialogRef<DialogEditBuyedProductsComponent>) {
   }
  
- 
-  
   dialogClose() {
     this.dialogRef.close();
   }

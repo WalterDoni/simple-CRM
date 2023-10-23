@@ -39,6 +39,7 @@ export class BarChartComponent {
     this.unsubUsers = this.subUser();
   }
 
+  //----Subscribe-Functions----//
   subUser() {
     return onSnapshot(this.usersRef(), (list) => {
       let currentUser: DocumentData[] = [];
@@ -60,6 +61,7 @@ export class BarChartComponent {
     this.unsubUsers();
   }
 
+   //----Data for Charts----//
   getAmountPerCompany() {
     this.dataValue = [];
     for (let i = 0; i < this.users.length; i++) {

@@ -21,6 +21,8 @@ export class DialogAddUserComponent {
     this.unsubUsers = this.subUsers();
   }
 
+  //----Subscribe-Functions----//
+
   subUsers() {
     return onSnapshot(this.usersRef(), (list) => {
       list.forEach(element => {
@@ -37,7 +39,7 @@ export class DialogAddUserComponent {
     return collection(this.firestore, 'users');
   }
 
-
+//----Save new User----//
   async saveNewUser() {
    this.currentDate();
     this.loading = true;
@@ -52,6 +54,7 @@ export class DialogAddUserComponent {
     )
   }
 
+//----Date----//
   currentDate(){
     let currentDate = new Date();
     let day = currentDate.getDate();

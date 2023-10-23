@@ -11,8 +11,7 @@ import { LoginComponent } from '../login/login.component';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent {
-
-  firestore: Firestore = inject(Firestore);
+  
   showSignUp: boolean = false;
   hide: boolean = true;
   registerForm: FormGroup = new FormGroup({

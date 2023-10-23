@@ -24,13 +24,12 @@ export class DialogEditAddressComponent {
   }
 
   async changeSelectedUserDetails() {
-  
     this.loading = true;
     let selectedUser = collection(this.firestore, 'users')
     await updateDoc(doc(selectedUser, this.userId), this.userData.toJSON());
     this.loading = false;
     this.dialogRef.close();
-   
   }
+  
 }
 

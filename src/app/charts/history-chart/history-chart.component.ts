@@ -13,7 +13,6 @@ export class HistoryChartComponent {
   position!: number;
   price!: number;
   sales!: string;
-
   
 data = [
   {position: 1, name: 'Gaming Grafikkarte', price: '1399€', sales: '15'},

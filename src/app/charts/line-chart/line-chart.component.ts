@@ -20,6 +20,7 @@ export class LineChartComponent {
     this.unsubUsers = this.subUser();
   }
 
+//----Subscribe-Functions----//
   subUser() {
     return onSnapshot(this.usersRef(), (list) => {
       let currentUser: DocumentData[] = [];
@@ -39,7 +40,8 @@ export class LineChartComponent {
   ngonDestroy() {
     this.unsubUsers();
   }
-
+  
+  //----Data for Charts----//
   getSalesPerProduct() {
 
     this.dataValue = [];

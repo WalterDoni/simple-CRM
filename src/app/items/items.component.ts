@@ -26,6 +26,8 @@ export class ItemsComponent {
     this.productPrices = productNamePrice.getPrice();
   }
 
+  
+  //----Subscribe-Functions----//
   subUsers(){
     return onSnapshot(this.usersRef(), (list) =>{
       let currentUser: DocumentData[] = [];
@@ -44,6 +46,9 @@ export class ItemsComponent {
     this.unsubUsers();
   }
 
+  
+  //----Calculater-Functions----//
+  
   calculateAmountOfSingleProduct(i: number) {
     let totalAmountSingleProduct = 0;
     this.allUsers.forEach((user) => {
