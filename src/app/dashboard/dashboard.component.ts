@@ -103,6 +103,7 @@ export class DashboardComponent {
   //----Sortfunction---//
 
   sortData(sort: Sort) {
+ 
     const data = this.valueSort.slice();
     if (!sort.active || sort.direction === '') {
       this.valueSort = data;
@@ -110,7 +111,7 @@ export class DashboardComponent {
     }
 
     this.valueSort = data.sort((a, b) => {
-      const isAsc = sort.direction === '';
+      const isAsc = sort.direction === 'asc';
       switch (sort.active) {
         case 'name':
           return isAsc ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
