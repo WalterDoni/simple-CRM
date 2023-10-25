@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild} from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -34,7 +34,11 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) { }
 
   //----Login-Functions----//
-    
+
+  /**
+   * Get the data from the inputfield anr push it into an object. Check the database and login, when there is an account with the current datas (email and password).
+   * Close the login Window and lead to  the dashboard.
+   */
   loginWithEmailAndPassword() {
     let userData = Object.assign(this.loginForm.value, { email: this.loginForm.value.email });  // create a variable, which use the target(loginForm.value) and source(loginForm.value.email) functions. Both are included in the Object.assign by JS automatically.
     this.authService.signInWithEmailAndPassword(userData).then((res: any) => { // signInWithEmailAndPassword is declared in auth.service.ts
@@ -42,22 +46,15 @@ export class LoginComponent {
       this.showWrongMessages = true;
       setTimeout(() => {
         this.showLogIn = false;
-        this.router.navigateByUrl('dashboard');
         this.closeLogInWIndow();
+        this.router.navigateByUrl('dashboard');
       }, 2000);
     }).catch((error: any) => {
       console.error(error);
     })
-
-    if (this.showWrongMessages == false) {
-      this.emailIsWrong.nativeElement.classList.remove('d-none');
-      this.passwordIsWrong.nativeElement.classList.remove('d-none');
-    } else {
-      this.emailIsWrong.nativeElement.classList.add('d-none');
-      this.passwordIsWrong.nativeElement.classList.add('d-none');
-    }
+    this.wrongMessagesWhileLogin();
   }
-  
+
   loginAsGuest() {
     let userData = Object.assign(this.loginForm.value, { email: "guest@guest.at", password: "guest123" });
     this.authService.signInWithEmailAndPassword(userData).then((res: any) => {
@@ -73,7 +70,7 @@ export class LoginComponent {
   }
 
   loginWithGoogle() {
-    this.authService.signInWithGoogle().then((res: any) => {
+    this.authService.signInWithGoogle().then((res: any) => { // signInWithGoogle is declared in auth.service.ts
       this.showLogIn = true;
       setTimeout(() => {
         this.showLogIn = false;
@@ -112,6 +109,20 @@ export class LoginComponent {
   }
 
   //----Help-Functions----//
+
+  /**
+   * When someone tries to log in with incorrect data or an unregistered account, an error message will appear.
+   */
+  wrongMessagesWhileLogin() {
+    if (this.showWrongMessages == false) {
+      this.emailIsWrong.nativeElement.classList.remove('d-none');
+      this.passwordIsWrong.nativeElement.classList.remove('d-none');
+    } else {
+      this.emailIsWrong.nativeElement.classList.add('d-none');
+      this.passwordIsWrong.nativeElement.classList.add('d-none');
+    }
+    this.showWrongMessages = false;
+  }
 
   toggleShowLoginWindow() {
     LoginComponent.showLoginWindow = true;

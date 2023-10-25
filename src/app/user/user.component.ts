@@ -22,6 +22,7 @@ export class UserComponent {
   }
 
   //----Subscribe-Functions----//
+
   subUsers() {
     return onSnapshot(this.usersRef(), (list) => {
       const currentUsers: DocumentData[] = [];
@@ -32,9 +33,24 @@ export class UserComponent {
     });
   }
 
+  usersRef() {
+    return collection(this.firestore, 'users');
+  }
+
   ngonDestroy() {
     this.unsubUsers();
   }
+
+  //----DeleteUser-Function----//
+
+  deleteUser(i: any, event: Event) {
+    event.stopPropagation();
+    let id = this.allUsers[i]['id'];
+    deleteDoc(doc(this.firestore, 'users', id));
+  }
+
+
+  //----Help-Functions//
 
   getCleanJson(currentuser: User): {} {
     return {
@@ -51,18 +67,6 @@ export class UserComponent {
     this.dialog.open(DialogAddUserComponent);
   }
 
-  usersRef() {
-    return collection(this.firestore, 'users');
-  }
 
-  singeUserRef(colID: string, docID: string) {
-    return doc(collection(this.firestore, colID), docID);
-  }
-
-  deleteUser(i: any, event: Event) {
-    event.stopPropagation();
-    let id = this.allUsers[i]['id'];
-    deleteDoc(doc(this.firestore, 'users', id));
-  }
 
 }

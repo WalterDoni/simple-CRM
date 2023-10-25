@@ -11,7 +11,7 @@ import { LoginComponent } from '../login/login.component';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent {
-  
+
   showSignUp: boolean = false;
   hide: boolean = true;
   registerForm: FormGroup = new FormGroup({
@@ -20,7 +20,6 @@ export class SignupComponent {
   })
 
   static showSignUpWindow: boolean = true;
-
 
   @ViewChild('emailInput') emailInput!: ElementRef;
   @ViewChild('emailIsRequired') emailIsRequired!: ElementRef;
@@ -32,7 +31,7 @@ export class SignupComponent {
 
   signupWithEmailAndPassword() {
     let userData = Object.assign(this.registerForm.value, { email: this.registerForm.value.email });
-    this.authService.registerWithEmailAndPassword(userData).then((res: any) => {
+    this.authService.registerWithEmailAndPassword(userData).then((res: any) => { // registerWithEmailAndPassword is declared in auth.service.ts
       this.showSignUp = true;
       setTimeout(() => {
         this.showSignUp = false;
@@ -43,17 +42,9 @@ export class SignupComponent {
     })
   }
 
-  toggleShowLoginWindow() {
-    LoginComponent.showLoginWindow = false;
-    SignupComponent.showSignUpWindow = true;
-  }
-
-  getShowSigninWindow() {
-    return SignupComponent.showSignUpWindow;
-  }
+  //----Error on Inputfield-Functions----//
 
   onInputChangeEmail(value: string) {
-  
     if (value.length < 1 || !value.includes('@')) {
       this.emailIsRequired.nativeElement.classList.remove('d-none');
     } else {
@@ -62,7 +53,6 @@ export class SignupComponent {
   }
 
   onInputChangePassword(value: string) {
-
     if (value.length < 6) {
       this.passwordIsRequired.nativeElement.classList.remove('d-none');
     } else {
@@ -70,5 +60,14 @@ export class SignupComponent {
     }
   }
 
+  //----Help-Functions----//
 
+  toggleShowLoginWindow() {
+    LoginComponent.showLoginWindow = false;
+    SignupComponent.showSignUpWindow = true;
+  }
+
+  getShowSigninWindow() {
+    return SignupComponent.showSignUpWindow;
+  }
 }
