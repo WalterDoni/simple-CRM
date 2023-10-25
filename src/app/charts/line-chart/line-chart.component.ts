@@ -47,7 +47,8 @@ export class LineChartComponent {
     this.dataValue = [];
     for (let i = 0; i < this.labelValue.length; i++) {
       let value = 0;
-      for (let a = 0; a < this.labelValue.length; a++) {
+      for (let a = 0; a < this.users.length; a++) {
+        debugger
         value += this.users[a]['data']['amount'][i];
       }
       this.dataValue.push(value);

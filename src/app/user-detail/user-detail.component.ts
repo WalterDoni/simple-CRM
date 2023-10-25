@@ -3,9 +3,9 @@ import { Firestore, collection, onSnapshot } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 
 import { ActivatedRoute } from '@angular/router';
-import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
-import { DialogEditUserNameEmailComponent } from '../dialog-edit-user-name-email/dialog-edit-user-name-email.component';
-import { DialogEditBuyedProductsComponent } from '../dialog-edit-buyed-products/dialog-edit-buyed-products.component';
+import { DialogEditAddressComponent } from '../edit-components/dialog-edit-address/dialog-edit-address.component';
+import { DialogEditUserNameEmailComponent } from '../edit-components/dialog-edit-user-name-email/dialog-edit-user-name-email.component';
+import { DialogEditBuyedProductsComponent } from '../edit-components/dialog-edit-buyed-products/dialog-edit-buyed-products.component';
 import { User } from 'src/models/user.class';
 import { ProductNamePriceService } from 'src/models/product-name-price.service';
 
