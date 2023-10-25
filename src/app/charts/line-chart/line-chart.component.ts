@@ -20,7 +20,7 @@ export class LineChartComponent {
     this.unsubUsers = this.subUser();
   }
 
-//----Subscribe-Functions----//
+  //----Subscribe-Functions-> Firebase----//
   subUser() {
     return onSnapshot(this.usersRef(), (list) => {
       let currentUser: DocumentData[] = [];
@@ -40,37 +40,39 @@ export class LineChartComponent {
   ngonDestroy() {
     this.unsubUsers();
   }
-  
+
   //----Data for Charts----//
+
+  /**
+   * Iterate through ever available product and get the total amount of sold products.
+   */
   getSalesPerProduct() {
-
     this.dataValue = [];
-    for (let i = 0; i < this.labelValue.length; i++) {
+    this.labelValue.forEach((_, i) => {
       let value = 0;
-      for (let a = 0; a < this.users.length; a++) {
-        debugger
-        value += this.users[a]['data']['amount'][i];
-      }
+      this.users.forEach(user => {
+        value += user.data.amount[i];
+      });
       this.dataValue.push(value);
-    }
+    });
   }
 
-
-
-getChartData(){
-  
-  this.lineChartData = {
-    labels: this.labelValue,
-    datasets: [{
-      data: this.dataValue,
-      label: 'Product sales',
-      fill: true,
-      backgroundColor: 'green',
-      borderColor: 'black',
-      tension: 0.5,
+  /**
+ * Collect every necessary data for the chart. 
+ */
+  getChartData() {
+    this.lineChartData = {
+      labels: this.labelValue,
+      datasets: [{
+        data: this.dataValue,
+        label: 'Product sales',
+        fill: true,
+        backgroundColor: 'green',
+        borderColor: 'black',
+        tension: 0.5,
+      }
+      ]
     }
-    ]
   }
-}
 
 }

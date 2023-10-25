@@ -27,7 +27,7 @@ export class DashboardComponent {
 
   }
 
-  //----Subscribe-Functions----//
+  //----Subscribe-Functions-> Firebase----//
 
   subUsers() {
     return onSnapshot(this.usersRef(), (list) => {
@@ -51,13 +51,13 @@ export class DashboardComponent {
   //----Calculator-Functions----//
 
   /**
-   * Show the total amount of products sold.
+   * Calculate the total amount of products sold.
    */
   calcProductSales() {
     let totalValue = 0;
     this.allUsers.forEach((user) => {
       let singleUserTotalAmount = 0;
-      user['data']['amount'].forEach((amount: any) => {
+      user['data']['amount'].forEach((amount: number) => {
         singleUserTotalAmount += amount;
       });
       totalValue += singleUserTotalAmount;
@@ -65,6 +65,9 @@ export class DashboardComponent {
     return totalValue;
   }
 
+  /**
+   * Calculate the total value of products sold.
+   */
   calculateTotalValueOfAllSales(): number {
     let totalValue = 0;
     this.productPrices.forEach((item, i) => {
@@ -73,24 +76,27 @@ export class DashboardComponent {
     return totalValue;
   }
 
-  calculateTotalValueOfCompany() {
-    let value = 0;
-    let totalValue = 0;
-    for (let i = 0; i < this.allUsers.length; i++) {
-      totalValue = 0;
-      for (let v = 0; v < this.allUsers[i]['data']['amount'].length; v++) {
-        value = this.allUsers[i]['data']['amount'][v] * this.productPrices[v];
+   /**
+   * Calculate the total value of every single company and display them on the table, with the possibility to sort them.
+   */
+  calculateTotalValueOfCompany(){
+    this.allUsers.forEach((user) => {
+      let totalValue = 0;
+      user['data']['amount'].forEach((amount: number, i: number) => {
+        let value = amount * this.productPrices[i];
         totalValue += value;
-      }
-      let companyName = this.allUsers[i]['data']['company'];
-      let companyValue = { name: companyName, value: totalValue };
+      });
+      let companyName = user['data']['company'];
+      let companyValue = { name: companyName , value: totalValue};
       if (this.valueSort.length < this.allUsers.length) {
         this.valueSort.push(companyValue);
       }
-    }
-    return totalValue;
+    })
   }
 
+  /**
+   * Calculate how often one product has been sold.
+   */
   calculateAmountOfSingleProduct(i: number) {
     let totalAmountSingleProduct = 0;
     this.allUsers.forEach((user) => {
@@ -102,14 +108,15 @@ export class DashboardComponent {
 
   //----Sortfunction---//
 
+  /**
+   * Sortfunction by Material Design. Allow to sort from biggest to smallest value.
+   */
   sortData(sort: Sort) {
- 
     const data = this.valueSort.slice();
     if (!sort.active || sort.direction === '') {
       this.valueSort = data;
       return;
     }
-
     this.valueSort = data.sort((a, b) => {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
@@ -122,7 +129,7 @@ export class DashboardComponent {
       }
     });
   }
-  
+
 }
 
 

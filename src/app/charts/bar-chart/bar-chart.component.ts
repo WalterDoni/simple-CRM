@@ -39,7 +39,7 @@ export class BarChartComponent {
     this.unsubUsers = this.subUser();
   }
 
-  //----Subscribe-Functions----//
+  //----Subscribe-Functions-> Firebase----//
   subUser() {
     return onSnapshot(this.usersRef(), (list) => {
       let currentUser: DocumentData[] = [];
@@ -61,32 +61,39 @@ export class BarChartComponent {
     this.unsubUsers();
   }
 
-   //----Data for Charts----//
+  //----Data for Charts----//
+
+  /**
+   * Iterate through the selected company and get the total amount of sold products.
+   */
   getAmountPerCompany() {
     this.dataValue = [];
-    for (let i = 0; i < this.users.length; i++) {
+    this.users.forEach(user => {
       let value = 0;
-      let company = this.users[i]['data']['amount']
-      for (let a = 0; a < company.length; a++) {
-        value += company[a]
-      }
+      let company = user.data.amount;
+      company.forEach((amount: number) => {
+        value += amount;
+      });
       this.dataValue.push(value);
-    }
+    });
   }
 
+  /**
+   * Get the name of every company (user) and shorten it if it has more than 3 letters.
+   */
   getCompanyNames() {
     this.labelsValue = [];
     this.users.forEach(user => {
-      let companyName = user['data']['company'];
-      if (companyName.length >= 3) {
-        this.labelsValue.push(companyName.substring(0, 5));
-      } else {
-        this.labelsValue.push(companyName);
-      }
+      let companyName = user.data.company;
+      let shortName = companyName.length >= 5 ? companyName.substring(0, 5) : companyName;
+      this.labelsValue.push(shortName);
     });
     this.getChartData();
   }
 
+  /**
+   * Collect every necessary data for the chart. 
+   */
   getChartData() {
     if (this.labelsValue.length > 0) {
       this.barChartData = {

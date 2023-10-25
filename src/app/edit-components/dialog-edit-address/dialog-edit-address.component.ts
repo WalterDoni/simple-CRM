@@ -14,15 +14,18 @@ export class DialogEditAddressComponent {
   userId: string = '';
   loading: boolean = false;
   firestore: Firestore = inject(Firestore);
-  
+
 
   constructor(private dialogRef: MatDialogRef<DialogEditAddressComponent>) {
-   }
+  }
 
   dialogClose() {
     this.dialogRef.close();
   }
 
+  /**
+   * Change the adress from the selected user.
+   */
   async changeSelectedUserDetails() {
     this.loading = true;
     let selectedUser = collection(this.firestore, 'users')
@@ -30,6 +33,6 @@ export class DialogEditAddressComponent {
     this.loading = false;
     this.dialogRef.close();
   }
-  
+
 }
 

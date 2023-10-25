@@ -9,19 +9,17 @@ import { User } from 'src/models/user.class';
   styleUrls: ['./dialog-add-user.component.scss']
 })
 export class DialogAddUserComponent {
+  
   user = new User();
   loading = false;
   firestore: Firestore = inject(Firestore);
-
-
-
   unsubUsers;
 
   constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>) {
     this.unsubUsers = this.subUsers();
   }
 
-  //----Subscribe-Functions----//
+  //----Subscribe-Functions-> Firebase----//
 
   subUsers() {
     return onSnapshot(this.usersRef(), (list) => {
@@ -39,9 +37,13 @@ export class DialogAddUserComponent {
     return collection(this.firestore, 'users');
   }
 
-//----Save new User----//
+  //----Save new User----//
+  /**
+   * At first get the current date. After that a short load animation will appear at the top of the box. During this time the data get changed to a JSON before it will be pushed in the Firestore database.
+   * If something went wrong, it will appear in the console. The setTimeout will stop the loading animation and close the window.
+   */
   async saveNewUser() {
-   this.currentDate();
+    this.currentDate();
     this.loading = true;
     const userData = this.user.toJSON();
     await addDoc(this.usersRef(), userData).catch(
@@ -54,11 +56,15 @@ export class DialogAddUserComponent {
     )
   }
 
-//----Date----//
-  currentDate(){
+  //----Date----//
+
+  /**
+   * Get the current date, which will displayed at "Member since".
+   */
+  currentDate() {
     let currentDate = new Date();
     let day = currentDate.getDate();
-    let month = currentDate.getMonth() + 1; 
+    let month = currentDate.getMonth() + 1;
     let year = currentDate.getFullYear();
     return this.user.membersince = `${day}.${month}.${year}`;
   }
@@ -67,5 +73,5 @@ export class DialogAddUserComponent {
     this.dialogRef.close();
   }
 
-  
+
 }

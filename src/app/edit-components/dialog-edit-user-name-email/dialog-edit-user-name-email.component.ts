@@ -23,6 +23,9 @@ export class DialogEditUserNameEmailComponent {
     this.dialogRef.close();
   }
 
+  /**
+   * Change the name or email from the selected user.
+   */
   async changeSelectedUserDetails() {
     this.loading = true;
     let selectedUser = collection(this.firestore, 'users')

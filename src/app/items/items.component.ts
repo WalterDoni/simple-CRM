@@ -15,8 +15,6 @@ export class ItemsComponent {
   allUsers: DocumentData[] = [];
   productNames!: any[];
   productPrices!: any[];
-
- 
   unsubUsers;
 
   constructor(public dialog: MatDialog, private productNamePrice: ProductNamePriceService) {
@@ -25,9 +23,8 @@ export class ItemsComponent {
     this.productNames = productNamePrice.getName();
     this.productPrices = productNamePrice.getPrice();
   }
-
   
-  //----Subscribe-Functions----//
+  //----Subscribe-Functions-> Firebase----//
   subUsers(){
     return onSnapshot(this.usersRef(), (list) =>{
       let currentUser: DocumentData[] = [];
@@ -46,9 +43,11 @@ export class ItemsComponent {
     this.unsubUsers();
   }
 
-  
   //----Calculater-Functions----//
   
+  /**
+   * Display how often one product has been sold.
+   */
   calculateAmountOfSingleProduct(i: number) {
     let totalAmountSingleProduct = 0;
     this.allUsers.forEach((user) => {
@@ -57,7 +56,10 @@ export class ItemsComponent {
     });
     return totalAmountSingleProduct;
   }
-
+  
+  /**
+   * Display the total value of one sold product, depends how often it has been sold.
+   */
   calculateTotalValueOfAllSales(): number {
     let totalValue = 0;
     this.productPrices.forEach((item, i) => {

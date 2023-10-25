@@ -9,22 +9,25 @@ import { User } from 'src/models/user.class';
   styleUrls: ['./dialog-edit-buyed-products.component.scss']
 })
 
-export class DialogEditBuyedProductsComponent{
+export class DialogEditBuyedProductsComponent {
   userData: User = new User();
   index!: number;
   amount!: number;
   userId: string = '';
   loading: boolean = false;
   firestore: Firestore = inject(Firestore)
-  
-  
+
+
   constructor(public dialogRef: MatDialogRef<DialogEditBuyedProductsComponent>) {
   }
- 
+
   dialogClose() {
     this.dialogRef.close();
   }
 
+  /**
+  * Change the amount of buyed products from the user.
+  */
   async changeSelectedUserDetails() {
     this.loading = true;
     let selectedUser = collection(this.firestore, 'users');

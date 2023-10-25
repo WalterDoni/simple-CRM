@@ -1,5 +1,4 @@
-import { Component, ElementRef, ViewChild, inject } from '@angular/core';
-import { Firestore } from '@angular/fire/firestore';
+import { Component, ElementRef, ViewChild} from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -14,7 +13,6 @@ import { SignupComponent } from '../signup/signup.component';
 
 export class LoginComponent {
 
- 
   hide: boolean = true;
   showLogIn: boolean = false;
   showWrongMessages: boolean = false;
@@ -23,6 +21,7 @@ export class LoginComponent {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required)
   })
+
   static showLoginWindow: boolean = false;
 
   @ViewChild('emailInput') emailInput!: ElementRef;
@@ -34,23 +33,11 @@ export class LoginComponent {
 
   constructor(private authService: AuthService, private router: Router) { }
 
-  loginWithGoogle() {
-    this.authService.signInWithGoogle().then((res: any) => {
-      this.showLogIn = true;
-      setTimeout(() => {
-        this.showLogIn = false;
-        this.router.navigateByUrl('dashboard');
-        this.closeLogInWIndow();
-      }, 2000);
-    }).catch((error: any) => {
-      console.error(error);
-    })
-  }
-
+  //----Login-Functions----//
+    
   loginWithEmailAndPassword() {
-
-    let userData = Object.assign(this.loginForm.value, { email: this.loginForm.value.email });
-    this.authService.signInWithEmailAndPassword(userData).then((res: any) => {
+    let userData = Object.assign(this.loginForm.value, { email: this.loginForm.value.email });  // create a variable, which use the target(loginForm.value) and source(loginForm.value.email) functions. Both are included in the Object.assign by JS automatically.
+    this.authService.signInWithEmailAndPassword(userData).then((res: any) => { // signInWithEmailAndPassword is declared in auth.service.ts
       this.showLogIn = true;
       this.showWrongMessages = true;
       setTimeout(() => {
@@ -70,9 +57,8 @@ export class LoginComponent {
       this.passwordIsWrong.nativeElement.classList.add('d-none');
     }
   }
-
+  
   loginAsGuest() {
-
     let userData = Object.assign(this.loginForm.value, { email: "guest@guest.at", password: "guest123" });
     this.authService.signInWithEmailAndPassword(userData).then((res: any) => {
       this.showLogIn = true;
@@ -86,19 +72,20 @@ export class LoginComponent {
     })
   }
 
-  toggleShowLoginWindow() {
-    LoginComponent.showLoginWindow = true;
-    SignupComponent.showSignUpWindow = false;
+  loginWithGoogle() {
+    this.authService.signInWithGoogle().then((res: any) => {
+      this.showLogIn = true;
+      setTimeout(() => {
+        this.showLogIn = false;
+        this.router.navigateByUrl('dashboard');
+        this.closeLogInWIndow();
+      }, 2000);
+    }).catch((error: any) => {
+      console.error(error);
+    })
   }
 
-  closeLogInWIndow() {
-    LoginComponent.showLoginWindow = true;
-  }
-
-  getShowLoginWindow() {
-    return LoginComponent.showLoginWindow;
-  }
-
+  //----Error on Inputfield-Functions----//
 
   onInputChangeEmail(value: string) {
     if (this.showWrongMessages == false) {
@@ -123,4 +110,20 @@ export class LoginComponent {
       this.passwordIsRequired.nativeElement.classList.add('d-none');
     }
   }
+
+  //----Help-Functions----//
+
+  toggleShowLoginWindow() {
+    LoginComponent.showLoginWindow = true;
+    SignupComponent.showSignUpWindow = false;
+  }
+
+  closeLogInWIndow() {
+    LoginComponent.showLoginWindow = true;
+  }
+
+  getShowLoginWindow() {
+    return LoginComponent.showLoginWindow;
+  }
+
 }
