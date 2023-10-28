@@ -5,7 +5,7 @@
 
             <div style="margin-top: 5px;">
 
-                <div>
+                <div class="pb-40">
                     <mat-form-field class="mr-16" appearance="outline">
                         <mat-label>Email</mat-label>
                         <input matInput formControlName="email" type="email" placeholder="Email" #emailInput (keyup)="onInputChangeEmail(emailInput.value)">
@@ -25,9 +25,9 @@
 
                 <div mat-dialog-actions class="btn-container">
                     <button mat-button [disabled]="loginForm.invalid"
-                        (click)="loginWithEmailAndPassword()">Login</button>
-                    <button mat-button (click)="loginAsGuest()">Login as Guest</button>
-                    <button (click)="loginWithGoogle()" mat-button>Login with Google</button>
+                        (click)="loginWithEmailAndPassword()"><mat-icon>mail</mat-icon>Email</button>
+                    <button mat-button (click)="loginAsGuest()"><mat-icon>person</mat-icon>Guest</button>
+                    <button (click)="loginWithGoogle()" mat-button><mat-icon>outgoing_mail</mat-icon>Google</button>
                 </div>
                 <div class="signUp-container">
                     <p>Don't have an account?</p>

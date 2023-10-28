@@ -22,8 +22,8 @@
                 </div>
 
                 <div mat-dialog-actions class="btn-container">
-                    <button mat-button (click)="toggleShowLoginWindow()" routerLink="">Back</button>
-                    <button mat-button [disabled]="registerForm.invalid"  (click)="signupWithEmailAndPassword()">Register</button>
+                    <button mat-button (click)="toggleShowLoginWindow()" routerLink=""><mat-icon>arrow_back</mat-icon>Back</button>
+                    <button mat-button [disabled]="registerForm.invalid"  (click)="signupWithEmailAndPassword()"><mat-icon>how_to_register</mat-icon>Register</button>
                 </div>
             </div>
         </div>
