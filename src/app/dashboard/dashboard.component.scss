@@ -7,6 +7,8 @@
     @media (max-width: 1500px) {
         flex-direction: column;
     }
+
+    
 }
 
 app-line-chart,
@@ -95,6 +97,14 @@ mat-card {
     width: 20%;
     flex-direction: column;
 
+    div {
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        padding-top: 30px;
+    }
+
     mat-card {
         display: flex;
         align-items: center;
@@ -103,74 +113,57 @@ mat-card {
         border-radius: 10px;
         width: 200px;
 
-        @media(max-width: 650px) {
-
+        @media(max-width: 560px) {
             width: 150px;
-            height: 80px;
+
         }
 
-        @media(max-width: 500px){
-            width: 120px;
-            height: 60px;
-        }
-
-        @media(max-width: 400px){
-            width: 100px;
-            
-        }
-
-        @media(max-width: 360px){
-            width: 80px;
-        }
+      
 
         mat-card-title {
-            @media(max-width: 650px) {
+            @media(max-width: 675px) {
                 font-size: 16px;
             }
 
-            @media(max-width: 500px){
-               font-size: 13px;
+            @media(max-width: 560px) {
+                font-size: 13px;
             }
         }
-    mat-card-header,mat-card-content{
-        @media(max-width: 360px){
-            padding: 0;
-        }
-    }
-    }
 
-    mat-card:nth-child(2) {
-        width: 200px;
-
-        @media(max-width: 650px) {
-
-            width: 150px;
-            height: 80px;
-        }
-
-        @media(max-width: 500px){
-            width: 120px;
-            height: 60px;
+        mat-card-header,
+        mat-card-content {
+            @media(max-width: 360px) {
+                padding: 0;
+            }
         }
     }
 
-
+  
     @media(max-width: 1500px) {
         flex-direction: unset;
         width: 100%;
     }
 
+    @media(max-width: 360px) {
+        flex-direction: column;
+       
+        
+    }
+
 }
 
-.pt-30{
+.pt-30 {
     padding-top: 30px;
     gap: 20px;
 }
 
 
-.btn{
+.btn {
+    background-color: white;
     border: 2px solid #66A5AD;
     border-radius: 10px;
     box-shadow: 0px 6px 19px 2px #C4DFE6;
     cursor: pointer;
+    width: 100%;
+
 }

@@ -1,6 +1,7 @@
 <div class="content">
     <app-bar-chart></app-bar-chart>
-    <div class="card-container">
+<div class="card-container">
+    <div>
         <mat-card>
             <mat-card-header>
                 <mat-card-title>Customers</mat-card-title>
@@ -13,6 +14,8 @@
             </mat-card-header>
             <mat-card-content>{{ calcProductSales()}}</mat-card-content>
         </mat-card>
+    </div>
+    <div> 
         <mat-card>
             <mat-card-header>
                 <mat-card-title>Total sales</mat-card-title>
@@ -20,9 +23,12 @@
             <mat-card-content>{{calculateTotalValueOfAllSales()}} €</mat-card-content>
         </mat-card>
         <mat-card>
-            <button class="btn" mat-button (click)="openDialogAddSales()">Add sales</button>
+            <button class="btn" mat-button (click)="openDialogAddSales()"><mat-icon>add</mat-icon>Add sales</button>
         </mat-card>
+         
     </div>
+
+</div>
 
 </div>
 <div class="content pt-30">

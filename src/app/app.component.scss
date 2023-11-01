@@ -166,6 +166,7 @@ mat-toolbar-row {
 
             &:hover {
                 border-radius: 10px;
+                background: #2e4a4e;
 
             }
 
@@ -183,12 +184,14 @@ mat-toolbar-row {
     width: 100px;
     height: 40px;
     border-radius: 10px;
+    border: 2px solid #66A5AD;
     color: white;
-    background: linear-gradient(57deg, rgba(163, 1, 230, 1) 0%, rgba(82, 95, 233, 1) 35%, rgba(1, 191, 248, 1) 100%);
+    background: #66A5AD;
+    box-shadow: 0px 6px 19px 2px #C4DFE6;
     cursor: pointer;
 
     &:hover{
-        background: linear-gradient(57deg, rgb(93, 6, 131) 0%, rgb(36, 42, 104)35%, rgb(2, 85, 110) 100%);
+        background: #2e4a4e;
     }
 }
 
