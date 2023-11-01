@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Sort } from '@angular/material/sort';
 import { ProductNamePriceService } from 'src/models/product-name-price.service';
 import { MatSort } from '@angular/material/sort';
+import { AddSalesComponent } from '../add-sales/add-sales.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -128,6 +129,11 @@ export class DashboardComponent {
           return 0;
       }
     });
+  }
+
+
+  openDialogAddSales(){
+    const dialog = this.dialog.open(AddSalesComponent)
   }
 
 }

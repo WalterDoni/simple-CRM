@@ -43,6 +43,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { DialogEditBuyedProductsComponent } from './edit-components/dialog-edit-buyed-products/dialog-edit-buyed-products.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { AddSalesComponent } from './add-sales/add-sales.component';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -63,6 +65,8 @@ import { SignupComponent } from './signup/signup.component';
     DialogEditBuyedProductsComponent,
     LoginComponent,
     SignupComponent,
+    AddSalesComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -89,6 +93,7 @@ import { SignupComponent } from './signup/signup.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatSelectModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,

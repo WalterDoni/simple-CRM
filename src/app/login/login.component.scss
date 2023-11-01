@@ -23,7 +23,7 @@
     justify-content: center;
     flex-direction: column;
     border-radius: 10px;
-    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 6px 19px 2px #C4DFE6;
 
     h1 {
         position: absolute;
@@ -86,11 +86,11 @@
     button {
         width: 120px;
         border-radius: 10px;
-        box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+        box-shadow: 0px 6px 19px 2px #C4DFE6;
         color: black;
         background-color: rgba(black, 0.05);
         border: 2px solid;
-        border-color: rgba(1, 191, 248, 1);
+        border-color: #66A5AD;
         border-radius: 10px;
 
         @media(max-width: 460px) {
@@ -125,8 +125,8 @@
     width: 290px !important;
     font-size: 24px;
     height: 50px;
-    background: linear-gradient(57deg, rgba(163, 1, 230, 1) 0%, rgba(82, 95, 233, 1) 35%, rgba(1, 191, 248, 1) 100%);
-    color: white;
+    background: #07575B;
+    color: whitesmoke;
     display: flex !important;
     justify-content: center;
     align-items: center;

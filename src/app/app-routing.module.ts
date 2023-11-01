@@ -6,6 +6,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
 import { ItemsComponent } from './items/items.component';
 import { SignupComponent } from './signup/signup.component';
+import { AddSalesComponent } from './add-sales/add-sales.component';
 
 
 
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'user/:id', component: UserDetailComponent},
   {path: 'legal-notice', component: LegalNoticeComponent},
   {path: 'items', component: ItemsComponent},
-  {path: 'signup', component: SignupComponent}
+  {path: 'signup', component: SignupComponent},
+  {path: 'add-sales', component: AddSalesComponent}
 ];
 
 @NgModule({
