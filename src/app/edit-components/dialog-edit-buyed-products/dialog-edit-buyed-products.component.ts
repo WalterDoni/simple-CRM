@@ -29,6 +29,11 @@ export class DialogEditBuyedProductsComponent {
   * Change the amount of buyed products from the user.
   */
   async changeSelectedUserDetails() {
+    const inputValue = String(this.amount);
+    if (isNaN(Number(inputValue)) || Number(inputValue) < 0 || Number(inputValue) > 99) {
+      alert('Invalid value: Please insert a number between 0 and 99.');
+      return;
+    }
     this.loading = true;
     let selectedUser = collection(this.firestore, 'users');
     this.userData['amount'][this.index] = this.amount
